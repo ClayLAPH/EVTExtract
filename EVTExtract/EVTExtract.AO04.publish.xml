@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseName>evt_extract</TargetDatabaseName>
+    <DeployScriptFileName>EVTExtract.sql</DeployScriptFileName>
+    <TargetConnectionString>Data Source=pdsqlao04;Persist Security Info=True;User ID=IRISExtract;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</TargetConnectionString>
+    <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
+    <DropObjectsNotInSource>False</DropObjectsNotInSource>
+    <DoNotDropApplicationRoles>False</DoNotDropApplicationRoles>
+    <DoNotDropAssemblies>False</DoNotDropAssemblies>
+    <DoNotDropAsymmetricKeys>False</DoNotDropAsymmetricKeys>
+    <DoNotDropAudits>False</DoNotDropAudits>
+    <DoNotDropBrokerPriorities>False</DoNotDropBrokerPriorities>
+    <DoNotDropCertificates>False</DoNotDropCertificates>
+    <DoNotDropClrUserDefinedTypes>False</DoNotDropClrUserDefinedTypes>
+    <DoNotDropColumnEncryptionKeys>False</DoNotDropColumnEncryptionKeys>
+    <DoNotDropColumnMasterKeys>False</DoNotDropColumnMasterKeys>
+    <DoNotDropContracts>False</DoNotDropContracts>
+    <DoNotDropCredentials>False</DoNotDropCredentials>
+    <DoNotDropCryptographicProviders>False</DoNotDropCryptographicProviders>
+    <DoNotDropDatabaseAuditSpecifications>False</DoNotDropDatabaseAuditSpecifications>
+    <DoNotDropDatabaseRoles>False</DoNotDropDatabaseRoles>
+    <DoNotDropDatabaseScopedCredentials>False</DoNotDropDatabaseScopedCredentials>
+    <DoNotDropDatabaseTriggers>False</DoNotDropDatabaseTriggers>
+    <DoNotDropDatabaseWorkloadGroups>False</DoNotDropDatabaseWorkloadGroups>
+    <DoNotDropEndpoints>False</DoNotDropEndpoints>
+    <DoNotDropExternalDataSources>False</DoNotDropExternalDataSources>
+    <DoNotDropLinkedServerLogins>False</DoNotDropLinkedServerLogins>
+    <DoNotDropLinkedServers>False</DoNotDropLinkedServers>
+    <DoNotDropLogins>False</DoNotDropLogins>
+    <DoNotDropPermissions>False</DoNotDropPermissions>
+    <DoNotDropSequences>False</DoNotDropSequences>
+    <DoNotDropSymmetricKeys>False</DoNotDropSymmetricKeys>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+  </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="LACCovid">
+      <Value>LACCovid</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="PRD_APHIM_UODS">
+      <Value>PRD_APHIM_UODS</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>EVTExtract</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{41c50fa6-d2e7-41a0-8b49-7beaac545a60}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>EVTExtract</RootNamespace>
+    <AssemblyName>EVTExtract</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <ValidateCasingOnIdentifiers>False</ValidateCasingOnIdentifiers>
+    <AssemblyOwner>dbo</AssemblyOwner>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="internals" />
+    <Folder Include="internals\Views" />
+    <Folder Include="internals\Functions" />
+    <Folder Include="scripts" />
+    <Folder Include="internals\Tables" />
+    <Folder Include="internals\Procedures" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\Procedures" />
+    <Folder Include="dbo\Views\uvw" />
+    <Folder Include="dbo\Misc" />
+    <Folder Include="dbo\Views\base" />
+    <Folder Include="dbo\Tables\base" />
+    <Folder Include="dbo\Tables\support" />
+    <Folder Include="dbo\Views\support" />
+    <Folder Include="dbo\Tables\all" />
+    <Folder Include="internals\Tables\all" />
+    <Folder Include="dbo\Procedures\all" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="LACCovid">
+      <DefaultValue>LACCovid</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="PRD_APHIM_UODS">
+      <DefaultValue>PRD_APHIM_UODS</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\Permissions.sql" />
+    <Build Include="Security\internals.sql" />
+    <Build Include="internals\Views\Acts.sql" />
+    <Build Include="internals\Views\IncidentPersonalRecords.sql" />
+    <Build Include="internals\Views\IncidentPersons.sql" />
+    <Build Include="internals\Tables\DV_Person.sql" />
+    <Build Include="internals\Functions\DiseaseTypes.sql" />
+    <Build Include="internals\Functions\AttributeStringByEntity.sql" />
+    <Build Include="internals\Functions\AttributeDateTimeByEntity.sql" />
+    <Build Include="internals\Functions\IncidentSpecimensNotes.sql" />
+    <Build Include="internals\Tables\AX_LabReport.sql" />
+    <Build Include="internals\Functions\LabTime.sql" />
+    <Build Include="internals\Functions\LabName.sql" />
+    <Build Include="internals\Functions\Hospital.sql" />
+    <Build Include="internals\Functions\SuspectedExposureTypes.sql" />
+    <Build Include="internals\Views\Person.sql" />
+    <Build Include="internals\Views\Lab.sql" />
+    <Build Include="dbo\Procedures\InitializeExtract.sql" />
+    <Build Include="dbo\Procedures\SetProcessingStatus.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidPerson.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidLab.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidIncident.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2Person.sql" />
+    <Build Include="dbo\Procedures\DefineJobs.sql" />
+    <Build Include="internals\Views\Contacts.sql" />
+    <Build Include="internals\Tables\PersonBirthCountry.sql" />
+    <Build Include="internals\Views\SourceBirthCountry.sql" />
+    <Build Include="internals\Views\PersonRacesPivoted.sql" />
+    <Build Include="internals\Views\PersonRacesSource.sql" />
+    <Build Include="dbo\Procedures\ExtractDVPerson.sql" />
+    <Build Include="dbo\Procedures\ExtractAXLabReport.sql" />
+    <Build Include="dbo\Procedures\ExtractBirthCountry.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidOutbreak.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidOutbreakLinkedContact.sql" />
+    <Build Include="internals\Views\UDFData.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidUdfData.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2UdfData.sql" />
+    <Build Include="dbo\Procedures\DisableOrReorganizeNonclusteredIndexes.sql" />
+    <Build Include="internals\Functions\IncidentSpecimensAggregated.sql" />
+    <Build Include="internals\Functions\DiagnosticTypes.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidOutbreakLinkedIncident.sql" />
+    <Build Include="internals\Tables\S_ConfigDefinition.sql" />
+    <Build Include="internals\Tables\S_ConfigValue.sql" />
+    <Build Include="dbo\Procedures\ExtractConfigData.sql" />
+    <Build Include="internals\Views\Outbreak.sql" />
+    <Build Include="internals\Functions\DiseaseGroups.sql" />
+    <Build Include="dbo\Views\uvw\uvw_add.sql" />
+    <Build Include="dbo\Views\uvw\uvw_COVID_CONTACT.sql" />
+    <Build Include="dbo\Views\uvw\uvw_covid_elr.sql" />
+    <Build Include="dbo\Views\uvw\uvw_COVID_false_OB_Inc.sql" />
+    <Build Include="dbo\Views\uvw\uvw_COVID_INCIDENT.sql" />
+    <Build Include="dbo\Views\uvw\uvw_COVID_LAB.sql" />
+    <Build Include="dbo\Views\uvw\uvw_Covid_OB_Contacts.sql" />
+    <Build Include="dbo\Views\uvw\uvw_COVID_OB_Incidents.sql" />
+    <Build Include="dbo\Views\uvw\uvw_COVID_OB_PROCESS_STATUS.sql" />
+    <Build Include="dbo\Views\uvw\uvw_COVID_OUTBREAK.sql" />
+    <Build Include="dbo\Views\uvw\uvw_COVID_PROCESS_STATUS.sql" />
+    <Build Include="dbo\Views\uvw\uvw_COVID_SPECIMEN.sql" />
+    <Build Include="dbo\Views\uvw\uvw_CrokerTest.sql" />
+    <Build Include="dbo\Views\uvw\uvw_EBOLASYMPV05.sql" />
+    <Build Include="dbo\Views\uvw\uvw_elr_incid_temp.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCOVPUI2Vax.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCOVPUICDPHUse.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCOVPUIEpiLink.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCOVPUIHomless.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCOVPUIHospDtl.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCOVPUIISOCNT.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCOVPUINCoV.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCOVPUINonNCoV.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCOVPUINotes.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCOVPUISx.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVComplexCase.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVDeathNoteDetail.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVDIGenEpi.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVEDVisit.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVEpiRiskFact.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVFacSect1.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVFacSect2.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVFacSect3.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVFacSect3V01.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVGuardInfo.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVHopsitalRx.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVIntakeAndCurrrent.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVInvActLog.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVIsoGuidSection.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVLabratory.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVMonitor.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVOBHOO.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVOBHOORecession.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVOBPEH.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVOBSiteVisit.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVOBVacSect.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVPEH.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVReqTask.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NVCLACOtherTesting.sql" />
+    <Build Include="dbo\Views\uvw\uvw_RESP_OB_PROCESS_STATUS.sql" />
+    <Build Include="dbo\Views\uvw\uvw_sars2_elr.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_INCIDENT.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_LAB.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_OB_PROCESS_STATUS.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_OUTBREAK.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_SPECIMEN.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SOGI.sql" />
+    <Build Include="dbo\Views\uvw\uvw_suspect_pastweek.sql" />
+    <Build Include="dbo\Views\uvw\uvw_TRVHXDTL.sql" />
+    <Build Include="dbo\Views\uvw\uvw_UNKNOWN_RESP_OUTBREAK.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidOutbreakUdfData.sql" />
+    <Build Include="internals\Views\Specimens.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidSpecimen.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2Specimen.sql" />
+    <Build Include="internals\Views\ProcessStatusHistory.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidOutbreakProcessStatusHistory.sql" />
+    <Build Include="dbo\Misc\NamesType.sql" />
+    <Build Include="dbo\Misc\Sequences.sql" />
+    <Build Include="dbo\Procedures\PreserveProcessingStatus.sql" />
+    <Build Include="dbo\Procedures\ExtractContacts.sql" />
+    <Build Include="dbo\Procedures\ExtractPersonInPieces.sql" />
+    <Build Include="internals\Functions\MultiInstanceFormNumber.sql" />
+    <Build Include="internals\Functions\ListSectionNumber.sql" />
+    <Build Include="internals\Functions\EntityName.sql" />
+    <Build Include="internals\Tables\AllContacts.sql" />
+    <Build Include="internals\Tables\AllContactsExpanded.sql" />
+    <Build Include="internals\Tables\covidacts.sql" />
+    <Build Include="internals\Tables\covidperson.sql" />
+    <Build Include="internals\Tables\covidpersonalrecord.sql" />
+    <Build Include="internals\Tables\LabDataExpanded.sql" />
+    <Build Include="internals\Tables\PersonExpanded.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2Lab.sql" />
+    <Build Include="internals\Tables\IncidentSpecimens.sql" />
+    <Build Include="internals\Procedures\LabExpanded.sql" />
+    <Build Include="internals\Tables\covidpersonkeys.sql" />
+    <Build Include="internals\Tables\covidpersonalrecordkeys.sql" />
+    <Build Include="dbo\Procedures\MakePostgresTable.sql" />
+    <Build Include="dbo\Procedures\sp_WhoIsActive.sql" />
+    <Build Include="dbo\Procedures\WaitForJobs.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2Incident.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidProcessHistory.sql" />
+    <Build Include="dbo\Procedures\MakePostgresInsertStatements.sql" />
+    <Build Include="dbo\Procedures\TruncateBaseTables.sql" />
+    <Build Include="dbo\Procedures\GetBaseTableCounts.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2OutbreakProcessStatusHistory.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2Outbreak.sql" />
+    <Build Include="dbo\Procedures\ExtractUnknownRespiratoryOutbreak.sql" />
+    <Build Include="dbo\Procedures\WaitForLessThan.sql" />
+    <Build Include="internals\Functions\GetDependentListSectionNumber.sql" />
+    <Build Include="internals\Functions\GetIndependentListSectionNumber.sql" />
+    <Build Include="internals\Functions\GetMultiInstanceFormNumber.sql" />
+    <Build Include="internals\Functions\GetFieldUCSValueAsConceptCode.sql" />
+    <Build Include="internals\Functions\GetUdfFieldValue.sql" />
+    <Build Include="internals\Functions\MapEntityId.sql" />
+    <Build Include="dbo\Views\base\COVID_INCIDENT.sql" />
+    <Build Include="dbo\Views\base\COVID_OUTBREAK_LINKED_CONTACT_VIEW.sql" />
+    <Build Include="dbo\Tables\base\COVID_CONTACT.sql" />
+    <Build Include="dbo\Tables\base\COVID_LAB.sql" />
+    <Build Include="dbo\Tables\base\COVID_OUTBREAK.sql" />
+    <Build Include="dbo\Tables\base\COVID_OUTBREAK_LINKED_CONTACT.sql" />
+    <Build Include="dbo\Tables\base\COVID_OUTBREAK_LINKED_INCIDENT.sql" />
+    <Build Include="dbo\Tables\base\COVID_OUTBREAK_PROCESS_STATUS_HISTORY.sql" />
+    <Build Include="dbo\Tables\base\COVID_OUTBREAK_UDF_DATA.sql" />
+    <Build Include="dbo\Tables\base\COVID_PERSON.sql" />
+    <Build Include="dbo\Tables\base\COVID_PROOCESS_STATUS_HISTORY.sql" />
+    <Build Include="dbo\Tables\base\COVID_SPECIMEN.sql" />
+    <Build Include="dbo\Tables\base\COVID_UDF_DATA.sql" />
+    <Build Include="dbo\Tables\base\SARS2_CONTACT.sql" />
+    <Build Include="dbo\Tables\base\SARS2_LAB.sql" />
+    <Build Include="dbo\Tables\base\SARS2_PERSON.sql" />
+    <Build Include="dbo\Tables\base\SARS2_SPECIMEN.sql" />
+    <Build Include="dbo\Tables\base\SARS2_UDF_DATA.sql" />
+    <Build Include="dbo\Tables\support\ProcessingDocuments.sql" />
+    <Build Include="dbo\Tables\support\ProcessingStatus.sql" />
+    <Build Include="dbo\Tables\support\ProcessingStatusCycle.sql" />
+    <Build Include="dbo\Tables\support\ProcessingStatusHistory.sql" />
+    <Build Include="dbo\Views\support\QueryProcessJobs.sql" />
+    <Build Include="dbo\Views\support\QueryProcessSummary.sql" />
+    <Build Include="dbo\Views\support\QueryViewReadiness.sql" />
+    <Build Include="dbo\Views\support\QueryProcessJobHistory.sql" />
+    <Build Include="dbo\Views\support\CompareRuns.sql" />
+    <Build Include="dbo\Procedures\ExtractUnknownRespiratoryOutbreakLinkedContact.sql" />
+    <Build Include="dbo\Procedures\ExtractUnknownRespiratoryOutbreakLinkedIncident.sql" />
+    <Build Include="dbo\Procedures\ExtractUnknownRespiratoryProcessStatusHistory.sql" />
+    <Build Include="dbo\Views\support\RunHistory.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidIncidentPerson.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidIncidentPersonalRecord.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidIncidentActs.sql" />
+    <Build Include="dbo\Procedures\WaitForSpecificJobs.sql" />
+    <Build Include="internals\Functions\Lab_Act_ID.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidIncidentInPieces2.sql" />
+    <Build Include="internals\Views\ActCodeIdToDiseaseGroups.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidIncidentLab.sql" />
+    <Build Include="internals\Tables\covidincidentlab.sql" />
+    <Build Include="dbo\Tables\all\All_Contact.sql" />
+    <Build Include="dbo\Tables\all\All_Lab.sql" />
+    <Build Include="dbo\Tables\all\All_Outbreak.sql" />
+    <Build Include="dbo\Tables\all\All_Outbreak_Linked_Contact.sql" />
+    <Build Include="dbo\Tables\all\All_Outbreak_Linked_Incident.sql" />
+    <Build Include="dbo\Tables\all\All_Outbreak_Process_Status_History.sql" />
+    <Build Include="dbo\Tables\all\All_Outbreak_UDF_Data.sql" />
+    <Build Include="dbo\Tables\all\All_Person.sql" />
+    <Build Include="dbo\Tables\all\All_Process_Status_History.sql" />
+    <Build Include="dbo\Tables\all\All_Specimen.sql" />
+    <Build Include="dbo\Tables\all\All_UDF_Data.sql" />
+    <Build Include="internals\Tables\all\allincidentacts.sql" />
+    <Build Include="internals\Tables\all\allincidentlab.sql" />
+    <Build Include="internals\Tables\all\allincidentperson.sql" />
+    <Build Include="internals\Tables\all\allincidentpersonalrecord.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllIncidentLab.sql" />
+    <Build Include="internals\Tables\all\allincidentpersonalrecordkeys.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllIncidentInPieces.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllIncidentPersonalRecordKeys.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllIncidentActs.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllIncidentPerson.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllIncidentPersonalRecord.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllIncident.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllPerson.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAll.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllUdfData.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllLab.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllSpecimen.sql" />
+    <Build Include="dbo\Views\base\All_Incident.sql" />
+    <Build Include="dbo\Views\base\All_Outbreak.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllOutbreak.sql" />
+    <Build Include="dbo\Views\base\All_Outbreak_Linked_Contact_View.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllOutbreakLinkedContact.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllOutbreakLinkedIncident.sql" />
+    <Build Include="dbo\Views\base\All_Outbreak_Linked_Incident_View.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllOutbreakProcessStatusHistory.sql" />
+    <Build Include="dbo\Views\base\ALL_OUTBREAK_PROCESS_STATUS_HISTORY_VIEW.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllProcessHistory.sql" />
+    <Build Include="dbo\Views\base\All_Process_Status_History.sql" />
+    <Build Include="dbo\Procedures\StartAndWaitForCovidJobs.sql" />
+    <Build Include="dbo\Procedures\StartAndWaitForSARS2Jobs.sql" />
+    <Build Include="dbo\Procedures\StartAndWaitForPrerequisiteJobs.sql" />
+    <Build Include="dbo\Procedures\GetAvailableAssets.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj">
+      <Name>PRD_APHIM_UODS</Name>
+      <Project>{1fc75751-01b5-4a30-8f58-4c980241f5da}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>True</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>PRD_APHIM_UODS</DatabaseSqlCmdVariable>
+    </ProjectReference>
+    <ProjectReference Include="..\LACCovid\LACCovid.sqlproj">
+      <Name>LACCovid</Name>
+      <Project>{9a0fab33-2506-41fc-8e01-3f32ac150b5b}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>True</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>LACCovid</DatabaseSqlCmdVariable>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EVTExtract.AO02.publish.xml" />
+    <None Include="scripts\GetMetadata.sql" />
+    <None Include="EVTExtract.DL01.publish.xml" />
+    <None Include="EVTExtract.AO04.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="scripts\PostDeploy.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="EVTExtract.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\msdb.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\msdb.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>msdb</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Views\base\COVID_OUTBREAK_LINKED_INCIDENT_VIEW.sql" />
+    <Build Include="dbo\Views\base\COVID_OUTBREAK_PROCESS_STATUS_HISTORY_VIEW.sql" />
+    <Build Include="dbo\Views\base\COVID_OUTBREAK_UDF_DATA_VIEW.sql" />
+    <Build Include="dbo\Views\base\COVID_OUTBREAK_VIEW.sql" />
+    <Build Include="dbo\Views\base\COVID_UVF_DATA_VIEW.sql" />
+    <Build Include="dbo\Views\base\SARS2_INCIDENT.sql" />
+    <Build Include="dbo\Views\base\SARS2_OUTBREAK.sql" />
+    <Build Include="dbo\Views\base\SARS2_OUTBREAK_PROCESS_STATUS_HISTORY.sql" />
+    <Build Include="dbo\Views\base\UNKNOWN_REPSIRATORY_PROCESS_STATUS_HISTORY.sql" />
+    <Build Include="dbo\Views\base\UNKNOWN_RESPIRATORY_OUTBREAK.sql" />
+    <Build Include="dbo\Views\base\UNKNOWN_RESPIRATORY_OUTBREAK_LINKED_CONTACT.sql" />
+    <Build Include="dbo\Views\base\UNKNOWN_RESPIRATORY_OUTBREAK_LINKED_INCIDENT.sql" />
+  </ItemGroup>
+</Project>

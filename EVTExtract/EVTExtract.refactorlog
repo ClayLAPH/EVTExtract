@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="a8ec2643-aa8e-4bb5-ad97-e8278be1a785" ChangeDateTime="12/24/2021 16:35:04">
+    <Property Name="ElementName" Value="[internals].[Persons]" />
+    <Property Name="ElementType" Value="SqlView" />
+    <Property Name="ParentElementName" Value="[internals]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="IncidentPersons" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f76ac590-7e4c-46b1-9f26-8b0f82f8f217" ChangeDateTime="12/24/2021 16:35:52">
+    <Property Name="ElementName" Value="[internals].[PersonalRecords]" />
+    <Property Name="ElementType" Value="SqlView" />
+    <Property Name="ParentElementName" Value="[internals]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="IncidentPersonalRecords" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3f2be090-8578-4c30-b865-37b54bf54bd4" ChangeDateTime="01/12/2022 00:02:54">
+    <Property Name="ElementName" Value="[dbo].[COVID_UVF_DATA_VIEW]" />
+    <Property Name="ElementType" Value="SqlView" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="COVID_UDF_DATA_VIEW" />
+  </Operation>
+</Operations>

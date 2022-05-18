@@ -1,0 +1,42 @@
+﻿CREATE TABLE internals.AllContactsExpanded
+(
+	DIID int NOT NULL,
+	CONTACTID int NOT NULL,
+	INSTANCEID int NULL,
+	RECORDTYPE varchar(2) NULL,
+	RLENT_FIRSTNAME varchar(100) NULL,
+	RLENT_LASTNAME varchar(100) NULL,
+	RLENT_MIDDLEINITIAL varchar(100) NULL,
+	RLENT_NAMESUFFIX varchar(50) NULL,
+	RLENT_AGE int NULL,
+	RLENT_DOB datetime NULL,
+	RLENT_SEX varchar(255) NULL,
+	RLENT_CONTACTTYPE varchar(255) NULL,
+	RLENT_DATESOFCONTACT datetime NULL,
+	RLENT_STREETADDRESS varchar(100) NULL,
+	RLENT_APARTMENT varchar(100) NULL,
+	RLENT_CITY varchar(100) NULL,
+	RLENT_ZIP varchar(100) NULL,
+	RLENT_PHONE varchar(100) NULL,
+	RLENT_DISTRICT varchar(255) NULL,
+	RLENT_PROPHYLAXISMEDICATION varchar(max) NULL,
+	RLENT_INVESTIGATORDR varchar(202) NULL,
+	RLENT_EXPEVENTDR int NULL,
+	RLENT_EXPEVENT varchar(250) NULL,
+	RLENT_PRIORITYDR varchar(255) NULL,
+	RLENT_CLUSTERID varchar(8000) NULL,
+	RLENT_STATUSDR varchar(255) NULL,
+	FOLDERID int NULL,
+	RLENT_ELECTRONICCONTACT varchar(8000) NULL,
+	RLENT_EMAIL varchar(8000) NULL,
+	RLENT_STATE varchar(100) NULL,
+	RLENT_RACE varchar(255) NULL,
+	RLENT_PersonalRecordDR int NULL,
+	RLENT_PersonalRecordID varchar(50) NULL,
+	RLENT_PersonalRecordType varchar(100) NULL,
+	RLENT_ContactInvestigationLinkedIncidentDR int NULL,
+	RLENT_ContactInvestigationLinkedIncidentID varchar(50) NULL
+)
+go
+create clustered index [AllContactsExpanded.DIID.CONTACTID.FakePrimaryKey]
+on internals.AllContactsExpanded(DIID, CONTACTID)

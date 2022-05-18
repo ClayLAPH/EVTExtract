@@ -3,3 +3,12 @@
 ################################################################################
 
 /PRD_APHIM_UODS/PRD_APHIM_UODS.sqlproj.user
+/PRD_APHIM_UODS/PRD_APHIM_UODS.dbmdl
+/LACCovid
+/PRD_APHIM_UODS
+/Sars2IncidentPullTest
+*.sqlx
+/EVTExtract/obj/Debug
+*.dbmdl
+*.jfm
+*.user
