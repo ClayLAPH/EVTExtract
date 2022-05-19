@@ -41,7 +41,7 @@ begin
       on
         pr.dvpr_rowid = a.PR_ROWID
     option
-      ( recompile, maxdop 8, use hint( 'enable_parallel_plan_preference' ) );
+      ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 
     select  @rows = @@rowcount, @status = 'ends';
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;
