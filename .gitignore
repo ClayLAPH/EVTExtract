@@ -12,3 +12,5 @@
 *.dbmdl
 *.jfm
 *.user
+*.txt
+/EVTExtract/bin/Debug
