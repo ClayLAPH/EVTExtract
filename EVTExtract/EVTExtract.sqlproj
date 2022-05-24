@@ -325,6 +325,9 @@
     <Build Include="dbo\Procedures\StartAndWaitForSARS2Jobs.sql" />
     <Build Include="dbo\Procedures\StartAndWaitForPrerequisiteJobs.sql" />
     <Build Include="dbo\Procedures\GetAvailableAssets.sql" />
+    <Build Include="internals\Views\CovidActs.sql" />
+    <Build Include="dbo\Tables\all\All_Disease_Codes.sql" />
+    <Build Include="dbo\Procedures\all\ExtractAllDiseaseCodes.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj">

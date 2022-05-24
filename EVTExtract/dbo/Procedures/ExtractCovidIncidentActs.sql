@@ -35,13 +35,9 @@ begin
       PR_ROWID, 
       PR_REPORTEDBYWEB, PR_REPORTEDBYLAB, PR_REPORTEDBYEHR, PR_TRANSMISSIONSTATUS, PR_DIAGSPECIMENTYPES, PR_EXPEXPOSURETYPES, PR_HEPATITISDRS, PR_DISEASEGROUPS, PR_OTHERDISEASE, PR_RESULTVALUE, PR_LIPTESTORDERED, PR_ISPREGNANT, PR_EXPECTEDDELIVERYDATE, PR_DATEOFDEATH, PR_ISSYMPTOMATIC, PR_ISPATIENTDIEDOFTHEILLNESS, PR_ISPATIENTHOSPITALIZED, PR_LABSPECIMENCOLLECTEDDATE, PR_LABSPECIMENRESULTDATE, PR_OUTPATIENT, PR_INPATIENT, PR_NAMEOFSUBMITTER, PR_HOSPITAL, PR_HOSPITALDR, PR_ANIMALREPORTID, PR_FBIDR, PR_FBINumber
     from
-      ( select phpr.dvpr_rowid from  [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord phpr with (nolock) where DVPR_DiseaseCode_ID = 543030 ) pr 
-      inner join
-      internals.Acts a
-      on
-        pr.dvpr_rowid = a.PR_ROWID
+      internals.CovidActsView a
     option
-      ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
+      ( force order, recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 
     select  @rows = @@rowcount, @status = 'ends';
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;

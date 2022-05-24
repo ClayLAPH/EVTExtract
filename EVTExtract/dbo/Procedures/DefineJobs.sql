@@ -101,6 +101,7 @@ begin
     ('ExtractContacts', 1 ),
 
     --all diseases
+    ('ExtractAllDiseaseCodes', 1 ),
     ('ExtractAllIncidentActs', 1 ),
     ('ExtractAllIncidentPerson', 1 ),
     ('ExtractAllIncidentPersonalRecord', 1 ),

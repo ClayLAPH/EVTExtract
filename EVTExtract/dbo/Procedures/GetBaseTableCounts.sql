@@ -16,7 +16,7 @@ begin
   select        'COVID_SPECIMEN',                       count(*) from COVID_SPECIMEN                        union all
   select        'COVID_UDF_DATA',                       count(*) from COVID_UDF_DATA                        union all
   select        'SARS2_CONTACT',                        count(*) from SARS2_CONTACT                         union all
-  select        'SARS2_INCIDENT',                       count(*) from [$(LACCovid)].covid.SARS2_INCIDENT    union all
+  select        'SARS2_INCIDENT',                       count(*) from dbo.SARS2_INCIDENT                    union all
   select        'SARS2_LAB',                            count(*) from SARS2_LAB                             union all
   select        'SARS2_OUTBREAK',                       count(*) from SARS2_OUTBREAK                        union all
   select        'SARS2_OUTBREAK_PROCESS_STATUS_HISTORY',count(*) from SARS2_OUTBREAK_PROCESS_STATUS_HISTORY union all

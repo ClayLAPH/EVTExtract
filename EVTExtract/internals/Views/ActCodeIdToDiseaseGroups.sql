@@ -3,7 +3,7 @@ select
   x.code_Id, [$(PRD_APHIM_UODS)].dbo.STRCONCAT( ucs.FullName ) names
 from
   (
-  select a.code_id, count(*) c from  [$(PRD_APHIM_UODS)].dbo.A_Act a where a.metaCode='PR_ROWID' group by a.code_ID
+  select a.code_id, count(*) c from  [$(PRD_APHIM_UODS)].dbo.A_Act a with (nolock) where a.metaCode='PR_ROWID' group by a.code_ID
   ) x
   inner join
   [$(PRD_APHIM_UODS)].dbo.V_CODEPROPERTY VCP with (nolock)		
