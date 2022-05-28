@@ -33,13 +33,13 @@ begin
       PER_COUNTY, PER_CENSUSBLOCK, PER_ZIPPLUS4, PER_COUNTRY, PER_COUNTRY_NAME, PER_DOB, PER_SEX, PER_RACE, PER_ETHNICITY, PER_OCCUPATION, PER_SEXCODE_DR, PER_RACECODE_DR,
       PER_ETHNICITYCODE_DR, PER_OCCUPATIONCODE_DR, PER_NAMESUFFIX, PER_RECORDCREATEDBY, PER_WORKSCHOOLLOCATION, PER_WORKSCHOOLCONTACT, PER_PRIMARYLANGUAGE_DR, PER_PRIMARYLANGUAGE,
       PER_EMAIL, PER_ELECTRONICCONTACT, PER_CURRENTVERSION, PER_DATEOFDEATH, PER_PERSONSTATUS, PER_STATUSFLAG, PER_PRIMARYNATIONALITY, PER_THIRDNAME, PER_FOURTHNAME, PER_NAMEPREFIX
-    from internals.Person
-    where
-      PER_ROWID in ( select distinct pr.DVPR_PersonDR from [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock) where DVPR_DiseaseCode_ID = 544041 )
+    from internals.SARS2Person
+    --where
+    --  PER_ROWID in ( select distinct pr.DVPR_PersonDR from [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock) where DVPR_DiseaseCode_ID = 544041 )
     --order by
     --  PER_ROWID
     option
-      ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
+      ( recompile, force order, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 
     select @rows = @@rowcount, @status = 'ends';
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;

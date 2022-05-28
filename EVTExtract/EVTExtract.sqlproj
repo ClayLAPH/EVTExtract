@@ -328,6 +328,7 @@
     <Build Include="internals\Views\CovidActs.sql" />
     <Build Include="dbo\Tables\all\All_Disease_Codes.sql" />
     <Build Include="dbo\Procedures\all\ExtractAllDiseaseCodes.sql" />
+    <Build Include="internals\Views\SARS2Person.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj">
