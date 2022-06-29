@@ -86,11 +86,11 @@ select
 from
   internals.DV_Person p with (nolock)
   left outer join
-  internals.PersonRacesPivoted ppp
+  internals.PersonRacesPivoted ppp with (nolock)
   on
     p.DVPER_RowID = ppp.PersonId
   left outer join
-  internals.PersonBirthCountry pbc
+  internals.PersonBirthCountry pbc with (nolock)
   on
     p.DVPER_RowID = pbc.PersonId
 

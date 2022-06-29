@@ -115,42 +115,6 @@ from
       )
   ) per
   left outer join
-  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               dateofUSArrival with (nolock)
-  on
-    dateofUSArrival.ENTITY_ID = per.EntityId 
-    and 
-    dateofUSArrival.NAME = 'PER_DATEOFUSARRIVAL'
-  left outer join
-  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               occupationLocation with (nolock)
-  on
-    dateofUSArrival.ENTITY_ID = per.EntityId  
-    and 
-    dateofUSArrival.NAME = 'PER_OCCUPATIONLOCATION'
-  left outer join
-  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               occupationSpecify with (nolock)
-  on
-    dateofUSArrival.ENTITY_ID = per.EntityId  
-    and 
-    dateofUSArrival.NAME = 'PER_OCCUPATIONDR'
-  left outer join
-  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               workSchoolContact with (nolock)
-  on
-    dateofUSArrival.ENTITY_ID = per.EntityId  
-    and 
-    dateofUSArrival.NAME = 'PER_WorkSchoolContact'
-  left outer join
-  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               StateNumber with (nolock)
-  on
-    dateofUSArrival.ENTITY_ID = per.EntityId 
-    and 
-    dateofUSArrival.NAME = 'PER_StateNumber'
-  left outer join
-  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               occupationSetting with (nolock) 
-  on  
-    occupationSetting.ENTITY_ID = per.DVPER_ROWID and
-    occupationSetting.NAME = 'PER_OCCUPATIONSETTINGTYPEDR' and
-    occupationSetting.TYPE = 'CV' 
-  left outer join
   [$(PRD_APHIM_UODS)].dbo.V_UnifiedCodeSet          DeceasedStatus with (nolock)
   on
     per.DVPER_DeceasedStatusDR = DeceasedStatus.ID
@@ -182,6 +146,42 @@ from
   [$(PRD_APHIM_UODS)].dbo.V_UnifiedCodeSet          StatusFlag with (nolock)
   on
     per.DVPER_StatusFlagDR = StatusFlag.ID
+  left outer join
+  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               dateofUSArrival with (nolock)
+  on
+    dateofUSArrival.ENTITY_ID = per.EntityId 
+    and 
+    dateofUSArrival.NAME = 'PER_DATEOFUSARRIVAL'
+  left outer join
+  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               occupationLocation with (nolock)
+  on
+    occupationLocation.ENTITY_ID = per.EntityId  
+    and 
+    occupationLocation.NAME = 'PER_OCCUPATIONLOCATION'
+  left outer join
+  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               occupationSpecify with (nolock)
+  on
+    occupationSpecify.ENTITY_ID = per.EntityId  
+    and 
+    occupationSpecify.NAME = 'PER_OCCUPATIONDR'
+  left outer join
+  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               workSchoolContact with (nolock)
+  on
+    workSchoolContact.ENTITY_ID = per.EntityId  
+    and 
+    workSchoolContact.NAME = 'PER_WorkSchoolContact'
+  left outer join
+  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               StateNumber with (nolock)
+  on
+    StateNumber.ENTITY_ID = per.EntityId 
+    and 
+    StateNumber.NAME = 'PER_StateNumber'
+  left outer join
+  [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               occupationSetting with (nolock) 
+  on  
+    occupationSetting.ENTITY_ID = per.DVPER_ROWID and
+    occupationSetting.NAME = 'PER_OCCUPATIONSETTINGTYPEDR' and
+    occupationSetting.TYPE = 'CV' 
 
   --------------------------------------------------------
   left outer join 
@@ -243,13 +243,13 @@ from
   left outer join
   [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               Email with (nolock)
   on
-    dateofUSArrival.ENTITY_ID = per.EntityId  
+    Email.ENTITY_ID = per.EntityId  
     and 
-    dateofUSArrival.NAME = 'PSNID_EMAILID'
+    Email.NAME = 'PSNID_EMAILID'
   left outer join
   [$(PRD_APHIM_UODS)].dbo.T_ATTRIBUTE               EContact with (nolock)
   on
-    dateofUSArrival.ENTITY_ID = per.EntityId  
+    EContact.ENTITY_ID = per.EntityId  
     and 
-    dateofUSArrival.NAME = 'PSNID_ELECTRONICCONTACT'
+    EContact.NAME = 'PSNID_ELECTRONICCONTACT'
 

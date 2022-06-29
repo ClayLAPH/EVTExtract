@@ -1,6 +1,6 @@
 ﻿create view QueryViewReadiness as
 (
-  select base.name view_name, base.StepOccurred available
+  select base.name view_name, base.StepOccurred available, base.CycleId cycle
   from
     dbo.ProcessingStatus base
   where
@@ -8,7 +8,7 @@
 )
 union all
 (
-  select r.view_name, d.available
+  select r.view_name, d.available, d.cycle
   from
     ( select 
         distinct v.view_name
@@ -51,7 +51,7 @@ union all
     inner join
     (
       select 
-        v.view_name name, max(j.ended) available
+        v.view_name name, j.cycle, max(j.ended) available
       from
         INFORMATION_SCHEMA.VIEW_TABLE_USAGE v
         inner join
@@ -65,7 +65,7 @@ union all
         and
         j.status = 'finished'
       group by
-        v.view_name
+        v.view_name, j.cycle
     ) d
     on
       r.view_name = d.name

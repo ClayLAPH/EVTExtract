@@ -94,7 +94,7 @@ from
     convert(varchar(20),ipsNew.ips_rowid) = auditDetail.newvalue
   )
   inner join
-  internals.outbreak o
+  internals.outbreak o with (nolock)
   on
     auditMain.RecordID = convert(varchar(20),o.OUTB_RowID)
 where  

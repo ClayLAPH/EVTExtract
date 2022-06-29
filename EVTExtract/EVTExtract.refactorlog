@@ -21,4 +21,18 @@
     <Property Name="ParentElementType" Value="SqlSchema" />
     <Property Name="NewName" Value="COVID_UDF_DATA_VIEW" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="944a30d0-c644-4e13-9ce7-b8ad08cb9f3c" ChangeDateTime="06/21/2022 12:35:16">
+    <Property Name="ElementName" Value="[dbo].[StartAndWaitForCovidJobs]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="StartCovidJobs" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7371981a-5385-4a2b-b6c1-f22aec7f55da" ChangeDateTime="06/21/2022 12:36:03">
+    <Property Name="ElementName" Value="[dbo].[StartAndWaitForSARS2Jobs]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="StartSARS2Jobs" />
+  </Operation>
 </Operations>

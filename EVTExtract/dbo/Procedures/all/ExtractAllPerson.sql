@@ -36,13 +36,13 @@ begin
       PER_ETHNICITYCODE_DR, PER_OCCUPATIONCODE_DR, PER_NAMESUFFIX, PER_RECORDCREATEDBY, PER_WORKSCHOOLLOCATION, PER_WORKSCHOOLCONTACT, PER_PRIMARYLANGUAGE_DR, PER_PRIMARYLANGUAGE,
       PER_EMAIL, PER_ELECTRONICCONTACT, PER_CURRENTVERSION, PER_DATEOFDEATH, PER_PERSONSTATUS, PER_STATUSFLAG, PER_PRIMARYNATIONALITY, PER_THIRDNAME, PER_FOURTHNAME, PER_NAMEPREFIX
     from 
-      internals.Person per
+      internals.Person per with (nolock)
       inner join
       [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock)
       on
         pr.DVPR_PersonDR = per.PER_ROWID
       inner join
-      internals.allincidentpersonalrecordkeys prk
+      internals.allincidentpersonalrecordkeys prk with (nolock)
       on
         prk.PR_ROWID = pr.DVPR_RowID and
         prk.PR_PERSONID = per.PER_ROWID

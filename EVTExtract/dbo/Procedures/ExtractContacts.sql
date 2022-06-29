@@ -242,7 +242,7 @@ begin
       RLENT_ContactInvestigationLinkedIncidentDR        = createdPRIncident.source_ID,
       RLENT_ContactInvestigationLinkedIncidentID        = createdPRIncidentInstance.extension
     from 
-      internals.AllContacts ac
+      internals.AllContacts                             ac with (nolock)
     --  /* 1
       left outer join 
       [$(PRD_APHIM_UODS)].dbo.A_ACTRELATIONSHIP         pert with (nolock)  
@@ -356,7 +356,7 @@ begin
       RLENT_ContactInvestigationLinkedIncidentDR,
       RLENT_ContactInvestigationLinkedIncidentID
     from 
-      internals.AllContactsExpanded ace
+      internals.AllContactsExpanded ace with (nolock)
     where
       ace.DIID in
       ( select pr.DVPR_RowID 
@@ -395,7 +395,7 @@ begin
       RLENT_ContactInvestigationLinkedIncidentDR,
       RLENT_ContactInvestigationLinkedIncidentID
     from 
-      internals.AllContactsExpanded ace
+      internals.AllContactsExpanded ace with (nolock)
     where
       ace.DIID in
       ( select pr.DVPR_RowID 

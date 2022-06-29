@@ -43,7 +43,7 @@ where
     where i.prev_run < o.this_run
   ) 
   and 
-  ( o.name like 'covid%' or 
-    o.name like 'sars2%' or 
+  ( o.name like 'covid&_%' escape '&' or 
+    o.name like 'sars2&_%' escape '&' or 
     o.name like 'unknown%' 
   );

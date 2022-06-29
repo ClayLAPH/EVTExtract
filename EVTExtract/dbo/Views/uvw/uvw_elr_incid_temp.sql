@@ -1,6 +1,6 @@
 create view dbo.uvw_elr_incid_temp as
 (
-  select *
+  select *, lab_cat = 'nCOV-2019'
   from 
     dbo.uvw_COVID_LAB a with (nolock)
     left outer join 
@@ -10,7 +10,7 @@ create view dbo.uvw_elr_incid_temp as
 )
 union all
 (
-  select *
+  select *, lab_cat = 'SARS-CoV-2'
   from 
     dbo.uvw_SARS2_LAB as c with (nolock) 
     left join 

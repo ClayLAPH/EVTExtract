@@ -39,7 +39,7 @@ begin
     from
       ( select distinct phpr.dvpr_persondr  from  [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord phpr with (nolock) where DVPR_DiseaseCode_ID = 543030 ) pr
       inner join 
-      internals.IncidentPersons per
+      internals.IncidentPersons per with (nolock)
       on 
         pr.dvpr_persondr = per.dvper_rowid
     where

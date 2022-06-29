@@ -63,6 +63,7 @@ begin
     ('ExtractAXLabReport', 1 ),
     ('ExtractBirthCountry', 1 ),
     ('ExtractConfigData', 1 ),
+    ('ExtractCovidActsAndAtts', 1 ),    
 
     --no-op (count nonly)
     ('ExtractSARS2Incident', 1 ),

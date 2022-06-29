@@ -325,10 +325,16 @@
     <Build Include="dbo\Procedures\StartAndWaitForSARS2Jobs.sql" />
     <Build Include="dbo\Procedures\StartAndWaitForPrerequisiteJobs.sql" />
     <Build Include="dbo\Procedures\GetAvailableAssets.sql" />
-    <Build Include="internals\Views\CovidActs.sql" />
+    <Build Include="internals\Views\CovidActsView.sql" />
     <Build Include="dbo\Tables\all\All_Disease_Codes.sql" />
     <Build Include="dbo\Procedures\all\ExtractAllDiseaseCodes.sql" />
     <Build Include="internals\Views\SARS2Person.sql" />
+    <Build Include="internals\Tables\CovidActsAndAtts.sql" />
+    <Build Include="dbo\Procedures\ExtractCovidActsAndAtts.sql" />
+    <Build Include="dbo\Tables\support\Availability.sql" />
+    <Build Include="dbo\Views\support\QueryViewReadinessHistory.sql" />
+    <Build Include="internals\Tables\SARS2ActsAndAtts.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2ActsAndActs.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj">

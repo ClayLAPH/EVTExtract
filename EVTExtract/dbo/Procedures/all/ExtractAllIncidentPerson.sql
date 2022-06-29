@@ -37,9 +37,9 @@ begin
       DVPER_GuardianName, 
       American_Indian_or_Alaska_Native, Asian___Specify, Black_or_African_American___Spec, Native_Hawaiian_or_Other_Pacific, Other___Specify, Unknown___Specify, White___Specify, Country_of_Birth
     from
-      internals.allincidentpersonalrecordkeys prk
+      internals.allincidentpersonalrecordkeys prk with (nolock)
       inner join 
-      internals.IncidentPersons per
+      internals.IncidentPersons per with (nolock)
       on 
         prk.PR_PERSONID = per.dvper_rowid
     where

@@ -55,9 +55,9 @@ begin
     PR_PHTYPE, PR_SPA, PR_SPACODE_DR, Health_District_Number, PR_SPECIMENTYPE, PR_SPECIMENDATECOLLECTED, PR_SPECIMENDATERECEIVED, PR_SPECIMENRESULT, PR_SPECIMENNOTE, 
     PR_LABORATORY, PR_NURSEINVESTIGATOR, Additional_Provider, Additional_Laboratory, Created_By, ImportedBy, Priority, Report_Source, Suspected_Exposure_Types, Type_of_Contact
   from 
-    internals.IncidentPersonalRecords pr
+    internals.IncidentPersonalRecords pr with (nolock)
     inner join
-    internals.allincidentpersonalrecordkeys prk
+    internals.allincidentpersonalrecordkeys prk with (nolock)
     on
       pr.PR_ROWID = prk.PR_ROWID
   option 

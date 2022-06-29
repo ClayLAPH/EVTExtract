@@ -7,6 +7,7 @@ begin
   execute msdb.dbo.sp_start_job @job_name = 'ExtractBirthCountry';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractAXLabReport';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractDVPerson';
+  execute msdb.dbo.sp_start_job @job_name = 'ExtractCovidActsAndAtts';
 
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2Incident';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2Outbreak';

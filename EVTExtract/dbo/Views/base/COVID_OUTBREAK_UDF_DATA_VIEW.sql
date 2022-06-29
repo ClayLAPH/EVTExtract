@@ -2,14 +2,14 @@
 select 
   * 
 from 
-  internals.UDFData 
+  internals.UDFData with (nolock) 
 where 
   RECORD_ID IN 
   (
     select 
       OUTB_RowID 
     from
-      internals.Outbreak 
+      internals.Outbreak with (nolock) 
     where 
       OUTB_DISEASECODE_DR = 543030
   );

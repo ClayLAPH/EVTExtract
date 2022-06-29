@@ -2,7 +2,6 @@
 begin
 
   set nocount on;
-
   execute dbo.ExtractAllIncidentPersonalRecordKeys;
   execute msdb.dbo.sp_start_job @job_name = 'ExtractAllDiseaseCodes';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractAllIncident';

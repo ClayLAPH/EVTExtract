@@ -56,7 +56,7 @@ FROM   ((((([$(PRD_APHIM_UODS)].dbo.[s_auditmain] [LPA_A1] with (nolock)
       inner join
       [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr
       on
-        LPA_A1.RecordID = pr.DVPR_RowID
+        LPA_A1.RecordID = convert(varchar(10),pr.DVPR_RowID)
       )
 WHERE  
   [LPA_A2].[columnname] = 'PR_ProcessStatusDR' AND 
