@@ -69,7 +69,14 @@
 	LOCALORGANISMDESCRIPTIONTEXT varchar(1550) null,
 	LOCALORGANISMCODETEXT varchar(1270) null,
 	RELEVANTCLINICALINFORMATION nvarchar(300) null,
-	REASONFORSTUDY nvarchar(199) null
+	REASONFORSTUDY nvarchar(199) null,
+  LABNAME varchar(250) null,
+  CLIA varchar(50) null,
+  LABADDR1 varchar(50) null,
+  LABADDR2 varchar(50) null,
+  LABADDR3 varchar(50) null,
+  HL7TimestampOfMessage datetime null,
+  TimestampMessageReceived datetime null
 )
 go
 create clustered index [All_Lab.Fake.PrimaryKey] on dbo.All_Lab ( IncidentIdInt, Disease )

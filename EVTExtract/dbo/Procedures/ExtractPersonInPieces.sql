@@ -157,7 +157,7 @@ begin
     PER_FOURTHNAME = entityNames.partFourth,
     PER_NAMEPREFIX = entityNames.partPrefix 
   from
-    internals.PersonExpanded per
+    internals.PersonExpanded per with (nolock)
 
     outer apply
     internals.AttributeDateTimeByEntity(per.PER_RowID, 'PER_DATEOFUSARRIVAL') 

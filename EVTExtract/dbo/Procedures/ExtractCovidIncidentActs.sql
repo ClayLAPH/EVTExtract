@@ -18,6 +18,9 @@ begin
   begin try
 
    truncate table internals.covidacts;
+
+   --drop index if exists [covidacts.pr_rowid.fakeprimaryKey] on internals.covidacts;
+   
    insert internals.covidacts
     (
       PR_NOTES, 
@@ -35,11 +38,14 @@ begin
       PR_ROWID, 
       PR_REPORTEDBYWEB, PR_REPORTEDBYLAB, PR_REPORTEDBYEHR, PR_TRANSMISSIONSTATUS, PR_DIAGSPECIMENTYPES, PR_EXPEXPOSURETYPES, PR_HEPATITISDRS, PR_DISEASEGROUPS, PR_OTHERDISEASE, PR_RESULTVALUE, PR_LIPTESTORDERED, PR_ISPREGNANT, PR_EXPECTEDDELIVERYDATE, PR_DATEOFDEATH, PR_ISSYMPTOMATIC, PR_ISPATIENTDIEDOFTHEILLNESS, PR_ISPATIENTHOSPITALIZED, PR_LABSPECIMENCOLLECTEDDATE, PR_LABSPECIMENRESULTDATE, PR_OUTPATIENT, PR_INPATIENT, PR_NAMEOFSUBMITTER, PR_HOSPITAL, PR_HOSPITALDR, PR_ANIMALREPORTID, PR_FBIDR, PR_FBINumber
     from
-      internals.CovidActsView a
+      internals.CovidActsView
     option
-      ( force order, recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
+      ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 
     select  @rows = @@rowcount, @status = 'ends';
+    
+    --create clustered index [covidacts.pr_rowid.fakeprimaryKey] on internals.covidacts( PR_ROWID )
+
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;
   end try
   begin catch

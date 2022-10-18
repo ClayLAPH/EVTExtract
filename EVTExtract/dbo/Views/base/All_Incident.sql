@@ -127,7 +127,7 @@ from
   on
     a.PR_ROWID = pr.PR_RowID
   left outer join
-  internals.allincidentlab cl
+  internals.allincidentlab cl with (nolock)
   on
     a.PR_ROWID = cl.Id
     

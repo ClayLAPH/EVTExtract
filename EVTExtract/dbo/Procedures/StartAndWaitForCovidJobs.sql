@@ -1,9 +1,10 @@
-﻿create procedure dbo.StartAndWaitForCovidJobs as
+﻿create procedure dbo.StartCovidJobs as
 begin
   set nocount on;
 
   --covid 
   execute msdb.dbo.sp_start_job @job_name = 'ExtractCovidIncident';
+  waitfor delay '00:01'
   execute msdb.dbo.sp_start_job @job_name = 'ExtractCovidSpecimen';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractCovidPerson';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractCovidLab';
@@ -19,7 +20,7 @@ begin
   execute msdb.dbo.sp_start_job @job_name = 'ExtractContacts';
 
   --wait...
-  execute dbo.WaitForJobs 'Covid jobs';
+  --execute dbo.WaitForJobs 'Covid jobs';
 
   return 0;
 

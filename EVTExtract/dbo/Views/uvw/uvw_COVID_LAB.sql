@@ -92,7 +92,16 @@ select
     when lab.RESULTEDORGANISM = '315017' then 'Detected (qualifier value)'
     else lab.RESULTEDORGANISM
   end RESULTEDORGANISM, 
-  lab.RESULTTEXT RESULTTEXT
+  lab.RESULTTEXT RESULTTEXT,
+  lab.LABNAME,
+  lab.CLIA,
+  lab.LABADDR1,
+  lab.LABADDR2,
+  lab.LABADDR3,
+  lab.HL7TimestampOfMessage,
+  lab.TimestampMessageReceived,
+  lab.RELEVANTCLINICALINFORMATION,
+  lab.REASONFORSTUDY
 from 
   dbo.COVID_LAB AS lab with (nolock) 
   inner join

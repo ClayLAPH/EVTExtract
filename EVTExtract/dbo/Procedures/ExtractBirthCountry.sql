@@ -23,12 +23,12 @@ begin
       select source.PersonId,source.CountryName from
       (
         select PersonId, CountryName, binary_checksum(*) crc
-        from internals.SourceBirthCountry
+        from internals.SourceBirthCountry with (nolock)
       ) source
       full outer join
       (
         select PersonId, binary_checksum(*) crc
-        from internals.PersonBirthCountry
+        from internals.PersonBirthCountry with (nolock)
       ) as target
         on source.PersonId = target.PersonId
       where source.crc != target.crc
@@ -39,8 +39,8 @@ begin
 
     insert internals.PersonBirthCountry( PersonId, CountryName )
     select source.PersonId, source.CountryName
-    from internals.SourceBirthCountry source
-    where source.PersonId not in ( select PersonId from internals.PersonBirthCountry target )
+    from internals.SourceBirthCountry source with (nolock)
+    where source.PersonId not in ( select PersonId from internals.PersonBirthCountry target with (nolock) )
     
     select @rows += @@rowcount;
     select @status = 'ends';

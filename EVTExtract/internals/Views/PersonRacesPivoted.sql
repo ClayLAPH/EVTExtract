@@ -14,7 +14,7 @@ from
     Category,
     Races =isnull([$(PRD_APHIM_UODS)].dbo.STRCONCAT(Specify),N'')
   from
-    internals.PersonRacesSource prs
+    internals.PersonRacesSource prs with (nolock)
   group by
     PersonId,
     Category

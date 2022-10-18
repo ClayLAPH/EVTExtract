@@ -56,35 +56,3 @@
 	DVPER_Age int null
 );
 
---go
---create nonclustered index IX_DV_Person_PrimaryNationality on internals.DV_Person(DVPER_PrimaryNationalityDR) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_StatusFlag on internals.DV_Person(DVPER_StatusFlagDR) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_DeceasedStatus on internals.DV_Person(DVPER_DeceasedStatusDR) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_OccupationSettingType on internals.DV_Person(DVPER_OccupationSettingTypeDR) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_ResidenceCounty on internals.DV_Person(DVPER_ResidenceCountyDR) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_SexCode on internals.DV_Person(DVPER_SexCode_ID) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_RaceCode on internals.DV_Person(DVPER_RaceCode_ID) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_OccupationCode on internals.DV_Person(DVPER_OccupationCode_ID) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_MaritalStatusCode on internals.DV_Person(DVPER_MaritalStatusCode_ID) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_Ethnicity on internals.DV_Person(DVPER_EthnicityCode_ID) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_CreateDate on internals.DV_Person(DVPER_CreateDate) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_ImportOption on internals.DV_Person(DVPER_ImportOptionsCode_ID ASC) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_NamespaceImportOption on internals.DV_Person(DVPER_NamespaceCode_ID ASC, DVPER_ImportOptionsCode_ID ASC) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_NCMID on internals.DV_Person(DVPER_NCMID ASC) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_RootID on internals.DV_Person(DVPER_RootID ASC) with (fillfactor = 90);
---go
---create nonclustered index IX_DV_Person_Namespace on internals.DV_Person(DVPER_Namespace ASC, DVPER_IsContact ASC) include(DVPER_RootID) with (fillfactor = 90);

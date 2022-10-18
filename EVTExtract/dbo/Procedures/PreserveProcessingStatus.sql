@@ -12,9 +12,18 @@ begin
   from
     dbo.ProcessingStatus;
 
+  insert dbo.Availability 
+  (
+    cycle, view_name, available
+  )
+  select
+    cycle, view_name, available
+  from
+    dbo.QueryViewReadiness
+
   declare @historyId int = next value for dbo.CycleSequence;
 
-  delete dbo.ProcessingStatus;
+  truncate table dbo.ProcessingStatus;
 
   declare @jobCount int;
   

@@ -48,7 +48,7 @@ begin
       ) x
     where 
       x.rn = 1 and
-      x.Id in ( select PR_RowID from internals.allincidentpersonalrecordkeys  )
+      x.Id in ( select PR_RowID from internals.allincidentpersonalrecordkeys  with (nolock)  )
     option
       ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 

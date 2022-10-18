@@ -32,7 +32,7 @@ from
   ON 
     a_actrelationship.target_id = dv_phpersonalrecord.dvpr_rowid
   INNER JOIN 
-  internals.dv_person (nolock) 
+  internals.dv_person with (nolock) 
   ON 
     dv_person.dvper_rowid = dv_phpersonalrecord.dvpr_persondr 
   INNER JOIN 

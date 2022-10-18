@@ -27,8 +27,6 @@ begin
       PR_RowID, AUD_ID, AUD_OldValue, AUD_NewValue, AUD_ActionDate, AUD_Username
     from 
       [$(PRD_APHIM_UODS)].covid.COVID_PROCESS_STATUS_HISTORY
-    --order by
-    --  PR_RowID, AUD_ID
     option
       ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 

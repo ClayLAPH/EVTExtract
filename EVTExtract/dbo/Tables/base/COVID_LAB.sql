@@ -69,6 +69,13 @@
 	LOCALORGANISMCODETEXT varchar(1270) NULL,
 	RELEVANTCLINICALINFORMATION nvarchar(300) NULL,
 	REASONFORSTUDY nvarchar(199) NULL,
+  LABNAME varchar(250) null,
+  CLIA varchar(50) null,
+  LABADDR1 varchar(50) null,
+  LABADDR2 varchar(50) null,
+  LABADDR3 varchar(50) null,
+  HL7TimestampOfMessage datetime null,
+  TimestampMessageReceived datetime null
 )
 go
 create clustered index [COVID_LAB.IncidentIDInt.Fake.PrimaryKey]

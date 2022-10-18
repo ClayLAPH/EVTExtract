@@ -327,13 +327,12 @@ select
         on 
           a_actrelationship.target_id = dv_phpersonalrecord.dvpr_rowid) 
         inner join 
-        internals.dv_person with (nolock) on 
-          dv_person.dvper_rowid = dv_phpersonalrecord.dvpr_persondr
+        internals.dv_person with (nolock) 
+        on dv_person.dvper_rowid = dv_phpersonalrecord.dvpr_persondr
         ) 
         inner join 
         [$(PRD_APHIM_UODS)].dbo.v_unifiedcodeset with (nolock) 
-        on 
-          v_unifiedcodeset.id = dv_phpersonalrecord.dvpr_typedr
+        on v_unifiedcodeset.id = dv_phpersonalrecord.dvpr_typedr
         ) 
       where  
         dv_outbreak.dvob_rowid = v.outb_rowid and 

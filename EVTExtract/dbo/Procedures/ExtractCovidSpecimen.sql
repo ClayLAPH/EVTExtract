@@ -24,7 +24,7 @@ begin
     select 
       [PR_INCIDENTID], [Specimen Types], [Specimen Collected Date], [Specimen Received Date], [Result], [Specimen Notes], [Lab Report ID]
     from 
-      internals.Specimens c 
+      internals.Specimens c with (nolock) 
     where 
       DiseaseCode = 543030 
     --order by
