@@ -1,4 +1,5 @@
-﻿create view internals.SARS2Person as
+﻿create function internals.ParameterizedPerson ( @diseaseTypes dbo.IdsType readonly ) returns table as return
+(
 select    
   PER_ROWID = per.DVPER_ROWID,
   PER_LEGACY_ROWID = per.PER_LEGACY_ROWID,  
@@ -82,7 +83,7 @@ from
         from 
           [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord   pr with (nolock)
         where
-          pr.DVPR_DiseaseCode_ID = 544041       
+          pr.DVPR_DiseaseCode_ID in ( select Id from @diseaseTypes )
       ) pr
       inner join
       internals.DV_PERSON                               person with (nolock)
@@ -253,3 +254,4 @@ from
     and 
     EContact.NAME = 'PSNID_ELECTRONICCONTACT'
 
+)

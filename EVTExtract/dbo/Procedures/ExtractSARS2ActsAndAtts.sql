@@ -12,53 +12,80 @@ begin
     @messageText nvarchar(max) = null,
     @hasError bit = 0;
 
+  declare @persons dbo.IdsType
+
   -- this preloads a lot of A_Acts and T_Attribute values for covid incident
   execute dbo.SetProcessingStatus @status, @name, @instance;
   begin try 
+
     truncate table internals.SARS2ActsAndAtts; 
 
-    insert internals.SARS2ActsAndAtts( id, kind, valueBool, valueString_Txt, valueCode_Id, valueString )
+    insert @persons( Id ) 
+    select distinct per.DVPER_RowID
+    from
+      internals.DV_Person per with (nolock)
+      inner join
+      [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock)
+      on 
+        per.DVPER_RowID = pr.DVPR_PersonDR
+    where 
+      pr.DVPR_DiseaseCode_ID = 544041
+
+
+    insert internals.SARS2ActsAndAtts( id, kind, valueBool, valueString_Txt, valueCode_Id )
     select
-      att.Act_ID, att.name, att.valueBool, att.valueString_Txt, att.valueCode_ID, att.valueString
+      per.Id, 
+      att.name, 
+      att.valueBool, 
+      att.valueString_Txt, 
+      att.valueCode_ID
     from
       [$(PRD_APHIM_UODS)].dbo.T_Attribute att with (nolock)
       inner join
-      [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock)
+      @persons per
       on
-        att.Act_ID = pr.DVPR_RowID
+        att.Entity_ID = per.Id
     where
-      pr.DVPR_DiseaseCode_ID = 544041 and
       att.name in
       ( 'PER_DATEOFUSARRIVAL',
         'PER_OCCUPATIONLOCATION',
         'PER_OCCUPATIONDR',
-        'PER_WorkSchoolContact',
         'PER_StateNumber',
-        'PER_RESIDENCECOUNTYDR',
+        'PER_RESIDENCECOUNTYDR')
+
+
+    insert internals.SARS2ActsAndAtts( id, kind, valueString )
+    select
+      per.Id, 
+      att.name, 
+      att.valueString
+    from
+      [$(PRD_APHIM_UODS)].dbo.T_Attribute att with (nolock)
+      inner join
+      @persons per
+      on
+        att.Entity_ID = per.Id
+    where
+      att.name in
+      ( 'PER_WorkSchoolContact',
         'PSNID_EMAILID',
         'PSNID_ELECTRONICCONTACT' )
 
     update internals.SARS2ActsAndAtts 
     set 
-      id              = att.Act_ID, 
-      kind            = att.name, 
-      valueBool       = att.valueBool, 
-      valueString_Txt = att.valueString_Txt, 
-      valueCode_Id    = att.valueCode_ID, 
       valueString     = att.valueString
     from
-      [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock)
+      @persons per
       inner join
       [$(PRD_APHIM_UODS)].dbo.S_Link s_link with (nolock)
       on
-        s_link.Entity1_ID = pr.DVPR_RowID and
+        s_link.Entity1_ID = per.Id and
         s_link.name = 'Person-Primary'
       inner join
       [$(PRD_APHIM_UODS)].dbo.T_Attribute att with (nolock)
       on
         att.Act_ID = s_link.Entity2_ID
     where
-      pr.DVPR_DiseaseCode_ID = 544041 and
       internals.SARS2ActsAndAtts.id = att.Act_ID and
       internals.SARS2ActsAndAtts.kind = att.name and
       att.name in

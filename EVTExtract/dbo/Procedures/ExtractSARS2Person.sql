@@ -40,7 +40,7 @@ begin
     where
       PER_ROWID in ( select distinct pr.DVPR_PersonDR from [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock) where DVPR_DiseaseCode_ID = 544041 )
     option
-      ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
+      ( recompile, maxdop 8, use hint( 'enable_parallel_plan_preference' ) );
 
     select @rows = @@rowcount, @status = 'ends';
 

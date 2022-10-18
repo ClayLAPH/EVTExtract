@@ -85,18 +85,28 @@ select
       when charindex('||',DILR_LOCALORGANISMCODE) > 0 
       then right(DILR_LOCALORGANISMCODE, len(DILR_LOCALORGANISMCODE) - charindex('||',DILR_LOCALORGANISMCODE) - 1) 
       else '' 
-    end
+    end,
+    --> change # ?
+    LABNAME = labname.trivialName ,
+    CLIA = clia.extension ,
+	  LABADDR1 =addr1.[address],
+	  LABADDR2 =addr2.[address],
+	  LABADDR3 =addr3.[address],
+	  HL7TimestampOfMessage = act.availabilityTime ,
+	  TimestampMessageReceived = act.effectiveTime_Beg 
+    --> end change # ?
+
 from 
-  internals.Ax_LabReport lab with (nolock)
+  internals.Ax_LabReport                                        lab with (nolock)
   inner join
-  [$(PRD_APHIM_UODS)].dbo.A_Act act with (nolock) 
+  [$(PRD_APHIM_UODS)].dbo.A_Act                                 act with (nolock) 
   on 
     lab.DILR_ID = act.ID  and 
     act.classCode='OBS' and 
     act.metaCode = 'DILR_ID' and 
     act.statusCode='active'
   inner join
-  [$(PRD_APHIM_UODS)].dbo.A_ACT phCase with (nolock) 
+  [$(PRD_APHIM_UODS)].dbo.A_ACT                                 phCase with (nolock) 
   on 
     act.ACT_PARENT_ID=phCase.ID and 
     phCase.METACODE in('PR_RowID','AI_RowID','OB_RowID') and 
@@ -105,7 +115,7 @@ from
       phCase.STATUSCODE not in ('terminated', 'NULLIFIED')
     )  
   inner join
-  [$(PRD_APHIM_UODS)].dbo.T_INSTANCEIDENTIFIER instanceId with (nolock) 
+  [$(PRD_APHIM_UODS)].dbo.T_InstanceIdentifier                  instanceId with (nolock) 
   on 
     phCase.ID=instanceId.ACT_ID  and 
     (
@@ -114,6 +124,35 @@ from
       instanceId.[root] like '2.16.840.1.113883.3.33.4.2.2.11.7%'
     )
 
+  left outer join [$(PRD_APHIM_UODS)].dbo.T_EntityName          labname with (nolock)
+  on 
+    lab.DILR_LaboratoryDR = labname.Entity_ID
+
+  left outer join [$(PRD_APHIM_UODS)].dbo.T_InstanceIdentifier  clia with (nolock)
+  on 
+    lab.DILR_LaboratoryDR = clia.Entity_ID
+  
+	-----------------------------------------------------------------------------------
+  left outer join [$(PRD_APHIM_UODS)].dbo.T_EntityAddress       labaddr with (nolock)
+  on 
+    lab.DILR_LaboratoryDR = labaddr.Entity_ID
+	left outer join [$(PRD_APHIM_UODS)].dbo.T_AddressPart         addr1 with (nolock)
+  on 
+    labaddr.ID = addr1.Address_ID and 
+    addr1.[sequence] = 1 and 
+    addr1.partType = 'SAL'
+	left outer join [$(PRD_APHIM_UODS)].dbo. T_AddressPart        addr2 with (nolock)
+  on 
+    labaddr.ID = addr2.Address_ID and 
+    addr2.[sequence] = 2 and 
+    addr2.partType = 'SAL'
+	left outer join [$(PRD_APHIM_UODS)].dbo.T_AddressPart         addr3 with (nolock)
+  on 
+    labaddr.ID = addr3.Address_ID and 
+    addr3.[sequence] = 3 and 
+    addr3.partType = 'SAL'
+  -----------------------------------------------------------------------------------
+  
   left outer join 
   [$(PRD_APHIM_UODS)].dbo.V_UnifiedCodeSet abnormalFlag with (nolock) 
   on 

@@ -29,8 +29,8 @@ begin
   --else
   --begin
   --  execute dbo.StartAndWaitForPrerequisiteJobs;
-  --  execute dbo.StartSARS2Jobs;Welcome5555!W
-  --  waitfor delay '00:40'; WWkjfjfewoikefinkjwe
+  --  execute dbo.StartSARS2Jobs;
+  --  waitfor delay '00:40';
   --  execute dbo.StartCovidJobs;
   --end
 

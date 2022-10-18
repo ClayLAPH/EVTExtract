@@ -334,7 +334,10 @@
     <Build Include="dbo\Tables\support\Availability.sql" />
     <Build Include="dbo\Views\support\QueryViewReadinessHistory.sql" />
     <Build Include="internals\Tables\SARS2ActsAndAtts.sql" />
-    <Build Include="dbo\Procedures\ExtractSARS2ActsAndActs.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2ActsAndAtts.sql" />
+    <Build Include="dbo\Misc\IdsType.sql" />
+    <Build Include="internals\Views\UDFSources.sql" />
+    <Build Include="dbo\Tables\UDFSources.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj">
