@@ -80,6 +80,8 @@
     <Folder Include="dbo\Tables\all" />
     <Folder Include="internals\Tables\all" />
     <Folder Include="dbo\Procedures\all" />
+    <Folder Include="dbo\Tables\archive" />
+    <Folder Include="dbo\Views\archive" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="LACCovid">
@@ -338,6 +340,34 @@
     <Build Include="dbo\Misc\IdsType.sql" />
     <Build Include="internals\Views\UDFSources.sql" />
     <Build Include="dbo\Tables\UDFSources.sql" />
+    <Build Include="dbo\Tables\all\All_Person_Reduced.sql" />
+    <Build Include="dbo\Views\base\All_Person_Raw.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_CONTACT_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_INCIDENT_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_LAB_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_OUTBREAK_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_OUTBREAK_PROCESS_STATUS_HISTORY_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_PERSON_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_SPECIMEN_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_UDF_DATA_ARCHIVE.sql" />
+    <Build Include="dbo\Views\archive\SARS2_CONTACT_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_INCIDENT_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_LAB_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_OUTBREAK_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_OUTBREAK_PROCESS_STATUS_HISTORY_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_PERSON_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_SPECIMEN_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_UDF_DATA_COMBINED.sql" />
+    <Build Include="dbo\Views\base\UDF_CATALOG.sql" />
+    <Build Include="internals\Views\VTU.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_INCIDENT_ARCHIVE.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_LAB_ARCHIVE.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_OB_PROCESS_STATUS_ARCHIVE.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_OUTBREAK_ARCHIVE.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_SPECIMEN_ARCHIVE.sql" />
+    <Build Include="dbo\Views\base\Domain.sql" />
+    <Build Include="dbo\Views\base\UnifiedCodeSet.sql" />
+    <Build Include="dbo\Views\base\All_Tables_Catalog.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj">

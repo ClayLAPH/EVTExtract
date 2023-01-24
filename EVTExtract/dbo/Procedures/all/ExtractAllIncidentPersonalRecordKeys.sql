@@ -18,10 +18,36 @@ begin
     truncate table internals.allincidentpersonalrecordkeys; 
     insert internals.allincidentpersonalrecordkeys
     ( PR_ROWID, PR_PERSONID )
-    select 
-      pr.DVPR_RowID, pr.DVPR_PersonDR
-    from [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock)
-    where pr.DVPR_DiseaseCode_ID not in ( 543030, 544041, 509985 ) -- covid, sars2, unknown respiratory 
+    select pr.DVPR_RowID, pr.DVPR_PersonDR
+    from
+    [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr
+    inner join
+    (
+      select pr.DVPR_IncidentID IncidentID, max( pr.DVPR_RowID ) RowID
+      from
+        ( --6214676
+          select pr.DVPR_IncidentID IncidentID, max( pr.DVPR_CreateDate ) CreateDate 
+          from [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr
+          where pr.DVPR_DiseaseCode_ID not in ( 543030, 544041, 509985 ) and pr.DVPR_DiseaseCode_ID is not null
+          group by pr.DVPR_IncidentID
+        ) keys
+        inner join
+        [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr
+        on
+          keys.IncidentID = pr.DVPR_IncidentID
+          and
+          keys.CreateDate = pr.DVPR_CreateDate
+      where 
+        pr.DVPR_DiseaseCode_ID is not null
+      group by 
+        pr.DVPR_IncidentID
+      ) y
+      on 
+        pr.DVPR_RowID = y.RowID
+    where
+      pr.DVPR_DiseaseCode_ID is not null
+
+
     select @rows = @@rowcount, @status = 'ends';
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows
   end try

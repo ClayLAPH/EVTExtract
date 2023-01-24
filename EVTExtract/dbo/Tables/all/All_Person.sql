@@ -1,6 +1,7 @@
 ﻿create table dbo.All_Person
 (
   Disease int not null,
+	IncidentId int not null,
 	PER_ROWID int NOT NULL,
 	PER_LEGACY_ROWID varchar(50) NULL,
 	PER_COUNTRYOFBIRTHDR varchar(100) NULL,
@@ -62,4 +63,4 @@
 	PER_NAMEPREFIX varchar(50) NULL
 )
 go
-create clustered index [All_Person.Fake.PrimaryKey] on dbo.All_Person( PER_ROWID, Disease);
+create clustered index [All_Person.Fake.PrimaryKey] on dbo.All_Person( PER_ROWID, Disease, IncidentId);

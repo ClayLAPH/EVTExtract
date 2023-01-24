@@ -25,12 +25,13 @@ select
   NCVnonstafftype,
   HASupAddINVESTIGATOR,
   NCVOtherNonStaffType,
-/*
+--/*
   NCVOBDateEpiCurveUpLoaded = try_convert(datetime,NCVOBDateEpiCurveUpLoaded),
   NCVOBDateEpiFormUpLoaded = try_convert(datetime,NCVOBDateEpiFormUpLoaded),
   NCVOBDateLineListUpLoad = try_convert(datetime,NCVOBDateLineListUpLoad),
   NCVOBNoEpiCurve = substring(NCVOBNoEpiCurve,1,1),
   NCVOBNoLineList = substring(NCVOBNoLineList,1,1),
+  NCVDateLastCNonStaffAtFacility = try_convert(datetime, NCVDateLastCNonStaffAtFacility ),
 --*/
   NCVOBTIER,
   NCVOBNUMNONSTAFFTESTED,
@@ -99,12 +100,13 @@ pivot
     NCVOBInv,
     HASupAddINVESTIGATOR,
     NCVOtherNonStaffType,
-/*
+--/*
     NCVOBDateEpiCurveUpLoaded,
     NCVOBDateEpiFormUpLoaded,
     NCVOBDateLineListUpLoad,
     NCVOBNoEpiCurve,
     NCVOBNoLineList,
+    NCVDateLastCNonStaffAtFacility,
 --*/
     NCVOBTIER,
     NCVOBNUMNONSTAFFTESTED,

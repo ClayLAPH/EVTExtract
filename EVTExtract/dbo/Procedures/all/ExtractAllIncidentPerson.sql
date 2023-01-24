@@ -37,7 +37,7 @@ begin
       DVPER_GuardianName, 
       American_Indian_or_Alaska_Native, Asian___Specify, Black_or_African_American___Spec, Native_Hawaiian_or_Other_Pacific, Other___Specify, Unknown___Specify, White___Specify, Country_of_Birth
     from
-      internals.allincidentpersonalrecordkeys prk with (nolock)
+      (select distinct(x.PR_PERSONID) from internals.allincidentpersonalrecordkeys x) prk
       inner join 
       internals.IncidentPersons per with (nolock)
       on 
@@ -48,6 +48,7 @@ begin
       ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 
     select  @rows = @@rowcount, @status = 'ends';
+
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;
   end try
   begin catch

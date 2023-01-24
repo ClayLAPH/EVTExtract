@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31829.152
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PRD_APHIM_UODS", "PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj", "{1FC75751-01B5-4A30-8F58-4C980241F5DA}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EVTExtract", "EVTExtract\EVTExtract.sqlproj", "{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "LACCovid", "LACCovid\LACCovid.sqlproj", "{9A0FAB33-2506-41FC-8E01-3F32AC150B5B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sars2IncidentPullTest", "Sars2IncidentPullTest\Sars2IncidentPullTest.csproj", "{22272FE1-853C-4DF9-B0E6-85C87002FA48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		{9A0FAB33-2506-41FC-8E01-3F32AC150B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A0FAB33-2506-41FC-8E01-3F32AC150B5B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9A0FAB33-2506-41FC-8E01-3F32AC150B5B}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{22272FE1-853C-4DF9-B0E6-85C87002FA48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{22272FE1-853C-4DF9-B0E6-85C87002FA48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{22272FE1-853C-4DF9-B0E6-85C87002FA48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{22272FE1-853C-4DF9-B0E6-85C87002FA48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -36,6 +36,8 @@ begin
       [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock)
       on
         prk.PR_ROWID = pr.DVPR_RowID
+        and
+        prk.PR_PERSONID = pr.DVPR_PersonDR
     option
       ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 
