@@ -6,6 +6,7 @@ select
   NCVOBOtherTeam,
   NCVOBTeamCondVisit,
   NCVOBVisitType,
+  NCVOBSiteVisitNotWarranted,
   DIID = RECORD_ID,
   INSTANCEID = OUTB_OUTBREAKID,
   UDSectionActID = SECTION_INSTANCE_ID,
@@ -49,6 +50,7 @@ pivot
     NCVOBTeam,
     NCVOBOtherTeam,
     NCVOBTeamCondVisit,
-    NCVOBVisitType
+    NCVOBVisitType,
+    NCVOBSiteVisitNotWarranted
   )
 ) PivotTable

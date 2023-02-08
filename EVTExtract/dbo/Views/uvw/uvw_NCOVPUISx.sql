@@ -13,6 +13,8 @@ select
       when 'Skilled nursing facility' then 'SNF'
       when 'Mental health, alcohol, or drug treatment facility' then 'TRTF'
       when 'Homeless  encampment' then 'HMLE'
+      when 'County Juvenile Detention Facility' then 'CJDF'
+      when 'City Correctional Facility (Jail)' THEN 'CCF'
       else NULL
     end, 
   NCOVPUISx1CongSetName, 
@@ -72,7 +74,11 @@ select
       when 'Unknown' then 'U' 
       else NULL 
     end, 
-  NCOVPUISxComorbid =left(NCOVPUISxComorbid, len(NCOVPUISxComorbid)-1), 
+  NCOVPUISxComorbid =
+    case
+      when len( NCOVPUISxComorbid ) = 0 then null 
+      else left( NCOVPUISxComorbid, len( NCOVPUISxComorbid ) -1 )
+    end,
   NCOVPUISxComorbidOth, 
   NCOVPUISxCongSet =
     case NCOVPUISxCongSet
@@ -220,7 +226,11 @@ select
       when 'Unknown' then 'U' 
       else NULL 
     end, 
-  NCOVPUISxSx =  left(NCOVPUISxSx, len(NCOVPUISxSx)-1), 
+  NCOVPUISxSx =  
+    case
+      when len( NCOVPUISxSx ) = 0 then null
+      else left( NCOVPUISxSx, len( NCOVPUISxSx ) -1 )
+    end,
   NCOVPUISxSxCurStat, 
   NCOVPUISxSxOth, 
   NCOVPUISxSxStat, 
@@ -259,7 +269,7 @@ select
   FormInstanceID = FORM_INSTANCE_ID, 
   FormName = FORM_NAME, 
   FormDescription = FORM_DESCRIPTION, 
-  FormCreateDateTime = convert(datetime,FORM_CREATEDATE)
+  FormCreateDateTime = FORM_CREATEDATE
 from    
 (
   select  
@@ -270,7 +280,7 @@ from
     UDF.FORM_CREATEDATE, 
     UDF.SECTION_INSTANCE_ID, 
     UDF.FIELD_DEF_DR AS FIELD_DEF_DR, 
-    cast(FIELD_VALUE AS varchar(max)) AS FIELD_VALUE, 
+    UDF.FIELD_VALUE, 
     P.PER_ClientID, 
     I.PR_PHTYPE, 
     I.PR_DISEASE, 

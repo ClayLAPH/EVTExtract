@@ -84,9 +84,6 @@ select
   pr.Additional_Provider, 
   pr.Additional_Laboratory, 
   pr.pr_standardage Age, 
-  per.American_Indian_or_Alaska_Native, 
-  per.Asian___Specify, 
-  per.Black_or_African_American___Spec, 
   CMR_ID = pr.pr_cmrid, 
   per.Country_of_Birth, 
   pr.Created_By, 
@@ -103,9 +100,7 @@ select
   Medical_Record_Number = isnull(pr.PR_MRN, ''),
   Most_Recent_Lab_Result = coalesce(cl.Most_Recent_Lab_Result,''),
   Most_Recent_Lab_Result_Value = coalesce(pr.PR_LIPRESULTVALUE,cl.Most_Recent_Lab_Result_Value,''),
-  per.Native_Hawaiian_or_Other_Pacific,
   Occupation_Setting_Type = per.DVPER_OccupationSettingTypeSpecify,
-  per.Other___Specify,
   pr.PR_OUTBREAKDRSTEXT Outbreak_IDs,
   Parent_or_Guardian_Name = per.DVPER_GuardianName,
   pr.Priority,
@@ -114,8 +109,29 @@ select
   pr.Secondary_District,
   pr.Suspected_Exposure_Types,
   pr.Type_of_Contact,
-  per.Unknown___Specify,
-  per.White___Specify
+--  per.American_Indian_or_Alaska_Native, --renamed
+--  per.Asian___Specify, 
+--  per.Black_or_African_American___Spec, --renamed
+--  per.Native_Hawaiian_or_Other_Pacific, --renamed
+--  per.Other___Specify,
+--  per.Unknown___Specify,
+--  per.White___Specify,
+
+  prs.American_Indian_or_Alaska_Native__Specify, 
+  prs.Race_Category__American_Indian_or_Alaska_Native, 
+  prs.Asian__Specify, 
+  prs.Race_Category__Asian, 
+  prs.Black_or_African_American__Specify, 
+  prs.Race_Category__Black_or_African_American, 
+  prs.Native_Hawaiian_or_Other_Pacific_Islander__Specify, 
+  prs.Race_Category__Native_Hawaiian_or_Other_Pacific_Islander, 
+  prs.Other__Specify, 
+  prs.Race_Category__Other, 
+  prs.Unknown__Specify, 
+  prs.Race_Category__Unknown, 
+  prs.White__Specify, 
+  prs.Race_Category__White
+
 from   
   internals.allincidentpersonalrecord pr with (nolock)
   inner join 
@@ -130,5 +146,8 @@ from
   internals.allincidentlab cl with (nolock)
   on
     a.PR_ROWID = cl.Id
-    
+  left outer join 
+  dbo.PersonRaces prs
+  on
+    per.DVPER_RowID = prs.PER_ROWID
 

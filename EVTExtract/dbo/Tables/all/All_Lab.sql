@@ -76,9 +76,10 @@
   LABADDR2 varchar(50) null,
   LABADDR3 varchar(50) null,
   HL7TimestampOfMessage datetime null,
-  TimestampMessageReceived datetime null
+  TimestampMessageReceived datetime null,
+  CaseIncidentId int null --*
 )
 go
-create clustered index [All_Lab.Fake.PrimaryKey] on dbo.All_Lab ( IncidentIdInt, Disease )
+create clustered index [All_Lab.Fake.PrimaryKey] on dbo.All_Lab ( CaseIncidentId, Disease )
 go
-create index [All_Lab.LabReportId] on dbo.All_Lab( LabReportID )  
+create index [All_Lab.LabReportId] on dbo.All_Lab ( LabReportID )  

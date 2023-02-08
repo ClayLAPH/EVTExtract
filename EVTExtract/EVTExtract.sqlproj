@@ -340,7 +340,6 @@
     <Build Include="dbo\Misc\IdsType.sql" />
     <Build Include="internals\Views\UDFSources.sql" />
     <Build Include="dbo\Tables\UDFSources.sql" />
-    <Build Include="dbo\Tables\all\All_Person_Reduced.sql" />
     <Build Include="dbo\Views\base\All_Person_Raw.sql" />
     <Build Include="dbo\Tables\archive\SARS2_CONTACT_ARCHIVE.sql" />
     <Build Include="dbo\Tables\archive\SARS2_INCIDENT_ARCHIVE.sql" />
@@ -368,6 +367,11 @@
     <Build Include="dbo\Views\base\Domain.sql" />
     <Build Include="dbo\Views\base\UnifiedCodeSet.sql" />
     <Build Include="dbo\Views\base\All_Tables_Catalog.sql" />
+    <Build Include="dbo\Views\base\DrugSusceptibility.sql" />
+    <Build Include="dbo\Views\base\PersonRaces.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVChartAbstract.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVDICorrectionsFacilityInfo.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVEDUSection.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj">
