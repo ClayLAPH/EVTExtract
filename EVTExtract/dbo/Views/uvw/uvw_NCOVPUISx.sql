@@ -72,7 +72,11 @@ select
       when 'Unknown' then 'U' 
       else NULL 
     end, 
-  NCOVPUISxComorbid =left(NCOVPUISxComorbid, len(NCOVPUISxComorbid)-1), 
+  NCOVPUISxComorbid =
+    case
+      when len( NCOVPUISxComorbid ) = 0 then null 
+      else left( NCOVPUISxComorbid, len( NCOVPUISxComorbid ) -1 )
+    end,
   NCOVPUISxComorbidOth, 
   NCOVPUISxCongSet =
     case NCOVPUISxCongSet
@@ -220,7 +224,11 @@ select
       when 'Unknown' then 'U' 
       else NULL 
     end, 
-  NCOVPUISxSx =  left(NCOVPUISxSx, len(NCOVPUISxSx)-1), 
+  NCOVPUISxSx =  
+    case
+      when len( NCOVPUISxSx ) = 0 then null
+      else left( NCOVPUISxSx, len( NCOVPUISxSx ) -1 )
+    end,
   NCOVPUISxSxCurStat, 
   NCOVPUISxSxOth, 
   NCOVPUISxSxStat, 

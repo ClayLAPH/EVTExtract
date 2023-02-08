@@ -11,4 +11,4 @@
 )
 go 
 create clustered index [All_Process_Status_History.Fake.PrimaryKey]
-on dbo.All_Process_Status_History( PR_ROWID_INT, Disease )
+on dbo.All_Process_Status_History( PR_ROWID_INT, AUD_ID, Disease )

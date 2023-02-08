@@ -368,6 +368,7 @@
     <Build Include="dbo\Views\base\Domain.sql" />
     <Build Include="dbo\Views\base\UnifiedCodeSet.sql" />
     <Build Include="dbo\Views\base\All_Tables_Catalog.sql" />
+    <Build Include="dbo\Views\base\DrugSusceptibility.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj">
