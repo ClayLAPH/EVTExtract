@@ -1,11 +1,11 @@
-﻿create procedure dbo.ExtractSARS2UdfData
+﻿create procedure dbo.ExtractSARS2UdfDataArchive
   @isRestart tinyint = 0
 as
 begin
 
   set nocount on;
   declare 
-    @name sysname = 'SARS2_UDF_DATA',
+    @name sysname = 'SARS2_UDF_DATA_ARCHIVE',
     @instance int = next value for dbo.InstanceSequence,
     @status sysname = 'starts',
     @rows int = 0,
@@ -17,27 +17,18 @@ begin
   execute dbo.SetProcessingStatus @status, @name, @instance;
   begin try
 
-    truncate table dbo.SARS2_UDF_DATA;
+    truncate table dbo.SARS2_UDF_DATA_ARCHIVE;
 
-    insert dbo.SARS2_UDF_DATA 
+    insert dbo.SARS2_UDF_DATA_ARCHIVE 
     (       
       RECORD_ID, FORM_INSTANCE_ID, FORM_DEF_DR, Form_DEF_ID, FORM_NAME, FORM_SHOW_IN_CMR, FORM_SHOW_IN_NCM, FORM_DESCRIPTION, FORM_CREATEDATE, FORM_NUMBER, FORM_IsMultipleInstance, SECTION_INSTANCE_ID, SECTION_DEF_DR, SECTION_NAME, SECTION_STATUS, SECTION_TYPE, SECTION_NUMBER, FIELD_INSTANCE_ID, FIELD_DEF_DR, FIELD_NAME, FIELD_IS_REQUIRED, FIELD_VALUE, FIELD_CONCEPT_CODE_VALUE, FIELD_STATUS, FIELD_TYPE
     )
     select 
       RECORD_ID, FORM_INSTANCE_ID, FORM_DEF_DR, Form_DEF_ID, FORM_NAME, FORM_SHOW_IN_CMR, FORM_SHOW_IN_NCM, FORM_DESCRIPTION, FORM_CREATEDATE, FORM_NUMBER, FORM_IsMultipleInstance, SECTION_INSTANCE_ID, SECTION_DEF_DR, SECTION_NAME, SECTION_STATUS, SECTION_TYPE, SECTION_NUMBER, FIELD_INSTANCE_ID, FIELD_DEF_DR, FIELD_NAME, FIELD_IS_REQUIRED, FIELD_VALUE, FIELD_CONCEPT_CODE_VALUE, FIELD_STATUS, FIELD_TYPE
     from 
-      internals.UDFData u with (nolock) 
-    where 
-      u.RECORD_ID in
-      ( select 
-          pr.DVPR_RowID 
-        from  
-          [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock)
-        where 
-          pr.DVPR_DiseaseCode_ID = 544041 and pr.DVPR_RowID not in ( select DVPR_RowID from internals.Sars2Archive ) )
+      dbo.SARS2_UDF_DATA u with (nolock) 
     option
       ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
-
 
     select @rows = @@rowcount, @status = 'ends';
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;
@@ -52,7 +43,7 @@ begin
   if ( @hasError = 1 and @isRestart = 0 ) 
   begin
     waitfor delay '00:01';
-    execute dbo.ExtractSARS2UdfData @isRestart = 1;
+    execute dbo.ExtractSARS2UdfDataArchive @isRestart = 1;
   end
 
   return 0;

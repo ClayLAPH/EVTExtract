@@ -117,3 +117,5 @@ select
   White___Specify 
 from
   [$(LACCovid)].covid.SARS2_INCIDENT
+where
+  PR_ROWID not in ( select DVPR_RowID from internals.Sars2Archive )

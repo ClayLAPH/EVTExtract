@@ -28,7 +28,12 @@ begin
     from
       internals.Lab with (nolock) 
     where 
-      PHRECORDID in ( select pr.DVPR_RowID from [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock) where pr.DVPR_DiseaseCode_ID = 544041 )
+      PHRECORDID in ( 
+        select pr.DVPR_RowID 
+        from [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock) 
+        where 
+          pr.DVPR_DiseaseCode_ID = 544041 and 
+          pr.DVPR_RowID not in ( select DVPR_RowID from internals.Sars2Archive ) )
     option
       ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );      
 

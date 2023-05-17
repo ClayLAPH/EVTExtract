@@ -8,7 +8,7 @@ select
       when 'Negative' then 'NEG' 
       when 'Not done' then 'NOT'
       when 'Pending' then 'PEN'
-      when 'Postive' then 'POS'
+      when 'Positive' then 'POS'
       when 'Presumptive Positive' then 'PRP'
       else NULL
     end,

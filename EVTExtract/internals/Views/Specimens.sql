@@ -27,5 +27,5 @@ from
   [$(PRD_APHIM_UODS)].dbo.V_UnifiedCodeSet          specTypeName with (nolock) 
   on 
     specTypeName.ID = specs.DVIS_SpecimenTypeCode_ID
---where
---(ph.DVPR_DiseaseCode_ID = 543030)
+where
+  ph.DVPR_RowID not in ( select DVPR_RowID from internals.Sars2Archive )

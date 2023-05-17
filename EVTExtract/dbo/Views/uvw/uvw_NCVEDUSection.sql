@@ -9,6 +9,7 @@ select
   NCVDISchoolName,
   NCVDITK12Type,
   NCVInternalSchoolID,
+  NCVIDStaffEducation2,
   NCVDILastDateEduSett  = try_convert( datetime,NCVDILastDateEduSett),
   NCVDIExpPersonOutsideSchool,
   DIID                  = RECORD_ID,
@@ -62,6 +63,7 @@ pivot (
     NCVDISchoolName,
     NCVDITK12Type,
     NCVInternalSchoolID,
+    NCVIDStaffEducation2,
     NCVDILastDateEduSett,
     NCVDIExpPersonOutsideSchool  
   )

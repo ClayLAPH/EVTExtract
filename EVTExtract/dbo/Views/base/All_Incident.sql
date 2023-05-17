@@ -50,7 +50,7 @@ select
   a.PR_DISEASEGROUPS, 
   a.PR_RESULTVALUE, 
   a.PR_LIPTESTORDERED, 
-  a.PR_ISPREGNANT, 
+  a.PR_ISPREGNANT,
   a.PR_EXPECTEDDELIVERYDATE, 
   pr.PR_LIPRESULTNOTES, 
   pr.PR_LIPRESULTNAME, 
@@ -109,14 +109,6 @@ select
   pr.Secondary_District,
   pr.Suspected_Exposure_Types,
   pr.Type_of_Contact,
---  per.American_Indian_or_Alaska_Native, --renamed
---  per.Asian___Specify, 
---  per.Black_or_African_American___Spec, --renamed
---  per.Native_Hawaiian_or_Other_Pacific, --renamed
---  per.Other___Specify,
---  per.Unknown___Specify,
---  per.White___Specify,
-
   prs.American_Indian_or_Alaska_Native__Specify, 
   prs.Race_Category__American_Indian_or_Alaska_Native, 
   prs.Asian__Specify, 
