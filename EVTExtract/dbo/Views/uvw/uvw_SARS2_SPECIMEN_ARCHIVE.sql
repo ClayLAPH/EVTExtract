@@ -6,7 +6,7 @@ select
   Result                  = c.[Result],
   Specimen_Notes          = c.[Specimen Notes],
   Specimen_Types          = c.[Specimen Types],
-  ArchiveDate             = convert(date,getdate())
+  ArchiveVersion          = 1
 
 from
   dbo.SARS2_SPECIMEN_ARCHIVE        c with (nolock)

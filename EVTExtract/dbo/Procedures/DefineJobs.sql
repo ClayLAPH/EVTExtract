@@ -16,7 +16,7 @@ begin
       @jobStepId int,
       @jobRetries int = 1,
       @jobRetryInterval int = 1,
-      @jobOwner sysname = N'IRISExtract';
+      @jobOwner sysname = N'HOSTED\c267467';
 
 
   truncate table dbo.ProcessingDocuments;

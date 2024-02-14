@@ -102,7 +102,7 @@ select
   lab.TimestampMessageReceived,
   lab.RELEVANTCLINICALINFORMATION,
   lab.REASONFORSTUDY,
-  convert(date,getdate())                         ArchiveDate
+  ArchiveVersion                                 = 1
 
 from    
   dbo.SARS2_LAB_ARCHIVE lab with (nolock) 

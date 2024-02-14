@@ -27,7 +27,7 @@ select
   OUTB_OutbreakType                                        Outbreak_Type,
   OUTB_Notes                                               Notes,
   OUTB_IsHealthFacilityOutbreak                            OUTB_IsHealthFacilityOutbreak,
-  convert(date,getdate())                                  ArchiveDate
+  ArchiveVersion                                           = 1
 from    
   dbo.SARS2_OUTBREAK_ARCHIVE with (nolock)
 

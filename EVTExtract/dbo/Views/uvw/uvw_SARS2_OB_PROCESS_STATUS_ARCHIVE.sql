@@ -9,7 +9,7 @@ select
   P.AUD_NewValue                                             New_Value,
   try_convert(datetime,P.AUD_ActionDate)                     Action_Date,
   P.AUD_Username                                             Username,
-  convert(date,getdate())                                    ArchiveDate
+  ArchiveVersion                                           = 1
 from    
   dbo.SARS2_OUTBREAK_PROCESS_STATUS_HISTORY_ARCHIVE as P with (nolock) 
 	inner join

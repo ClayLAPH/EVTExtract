@@ -158,7 +158,7 @@ select
   incident.Unknown___Specify                Unknown_Specify, 
   incident.White___Specify                  White_Specify,  
   incident.Outbreak_IDs                     Outbreak_IDs,
-  convert(date,getdate())                   ArchiveDate
+  ArchiveVersion                          = 1
 from
   dbo.SARS2_PERSON_ARCHIVE AS person with (nolock) 
   inner join 
