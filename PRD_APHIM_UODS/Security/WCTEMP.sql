@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [WCTEMP]
+    AUTHORIZATION [dbo];
+

@@ -1,0 +1,1 @@
+create schema covid authorization dbo;

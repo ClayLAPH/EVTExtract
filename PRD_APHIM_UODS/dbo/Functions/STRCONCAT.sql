@@ -1,0 +1,4 @@
+﻿CREATE AGGREGATE [dbo].[STRCONCAT](@input NVARCHAR (MAX) NULL)
+    RETURNS NVARCHAR (MAX)
+    EXTERNAL NAME [ADCLib].[SqlFunction.Concatenate];
+

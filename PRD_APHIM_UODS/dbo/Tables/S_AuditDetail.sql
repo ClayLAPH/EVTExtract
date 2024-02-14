@@ -1,0 +1,20 @@
+﻿CREATE TABLE [dbo].[S_AuditDetail] (
+    [ID]         BIGINT        IDENTITY (1, 1) NOT NULL,
+    [AuditID]    BIGINT        NOT NULL,
+    [ColumnName] VARCHAR (400) NULL,
+    [OldValue]   VARCHAR (MAX) NULL,
+    [NewValue]   VARCHAR (MAX) NULL,
+    CONSTRAINT [S_AuditDetail_PK] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 95) ON [AUDIT_DATA_GROUP],
+    CONSTRAINT [FK_S_AuditDetail_ID] FOREIGN KEY ([AuditID]) REFERENCES [dbo].[S_AuditMain] ([ID]) NOT FOR REPLICATION
+) ON [AUDIT_DATA_GROUP] TEXTIMAGE_ON [AUDIT_DATA_GROUP];
+
+
+GO
+ALTER TABLE [dbo].[S_AuditDetail] NOCHECK CONSTRAINT [FK_S_AuditDetail_ID];
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_S_AuditDetail_2]
+    ON [dbo].[S_AuditDetail]([AuditID] ASC, [ColumnName] ASC) WITH (FILLFACTOR = 80)
+    ON [AUDIT_IDX_GROUP];
+

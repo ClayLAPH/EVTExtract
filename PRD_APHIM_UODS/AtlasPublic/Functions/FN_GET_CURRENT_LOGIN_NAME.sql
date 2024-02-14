@@ -1,0 +1,8 @@
+﻿
+CREATE FUNCTION [AtlasPublic].[FN_GET_CURRENT_LOGIN_NAME](@UserName As NVarchar(300))
+RETURNS Varchar(300)
+AS
+BEGIN
+	RETURN SUBSTRING(@UserName,CHARINDEX('\',@UserName) + 1, LEN(@UserName))	
+END
+

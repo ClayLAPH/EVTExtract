@@ -1,0 +1,80 @@
+﻿CREATE FUNCTION [DBO].NOTEMASK (@VALUE VARCHAR(8000))
+RETURNS VARCHAR(8000)
+AS BEGIN
+if @value='true' or @value='false' return @value 
+SET @VALUE=UPPER(@VALUE)
+SET @VALUE=
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+@VALUE,'A','X'),
+'B','X'),
+'C','X'),
+'D','X'),
+'E','X'),
+'F','X'),
+'G','X'),
+'H','X'),
+'I','X'),
+'J','X'),
+'K','X'),
+'L','X'),
+'M','X'),
+'N','X'),
+'O','X'),
+'P','X'),
+'Q','X'),
+'R','X'),
+'S','X'),
+'T','X'),
+'U','X'),
+'V','X'),
+'W','X'),
+'X','X'),
+'Y','X'),
+'Z','X'),
+'1','1'),
+'2','1'),
+'3','1'),
+'4','1'),
+'5','1'),
+'6','1'),
+'7','1'),
+'8','1'),
+'9','1'),
+'0','1')
+RETURN @VALUE
+END

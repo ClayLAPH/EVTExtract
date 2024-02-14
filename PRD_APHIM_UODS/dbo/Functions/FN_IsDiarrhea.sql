@@ -1,0 +1,19 @@
+﻿
+CREATE FUNCTION [dbo].[FN_IsDiarrhea](@FBI_RowID AS INT)
+	RETURNS BIT
+AS
+BEGIN
+
+DECLARE @COUNT AS INT
+SELECT @COUNT=(COUNT(DIA.valuebool)) 
+FROM 
+A_Act OBS (NOLOCK)
+INNER JOIN Ax_FBISymptom (NOLOCK) ON FBIS_RowID=OBS.ID AND OBS.statusCode <> 'nullified'
+INNER JOIN V_CodeProperty DIA (NOLOCK) on Ax_FBISymptom.FBIS_SymptomDR =DIA.subjCode_ID 
+WHERE OBS.Act_Parent_ID=@FBI_RowID AND DIA.valueBool =1 AND DIA.property ='SYM_IsDiarrhea'
+
+IF @COUNT > 0 RETURN 1
+RETURN 0
+
+END
+

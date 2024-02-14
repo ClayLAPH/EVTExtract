@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [covid]
+    AUTHORIZATION [dbo];
+

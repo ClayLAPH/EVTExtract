@@ -1,0 +1,11 @@
+﻿
+CREATE FUNCTION [dbo].[FN_GetUDSecIDNameByUCSID] (@ID INT)
+    RETURNS VARCHAR(255)
+AS
+BEGIN
+    DECLARE @SEC_ID VARCHAR(255)
+    DECLARE @SEC_Name VARCHAR(255)
+    SELECT @SEC_Name = fullName FROM V_UnifiedCodeSet (nolock) WHERE ID = @ID
+    SELECT @SEC_ID = SEC_ID FROM VCP_UDSection (nolock) WHERE SubjCode_ID = @ID
+    RETURN @SEC_Name+'('+@SEC_ID+')'
+END
