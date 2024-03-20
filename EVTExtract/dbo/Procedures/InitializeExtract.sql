@@ -19,20 +19,12 @@ begin
 
   execute dbo.SetProcessingStatus @status, @name, @instance;
 
-  --if ( @@serverName in ( 'PDSQLAO04', 'PDSQLDL01' ) )
-  --begin
     execute dbo.StartAndWaitForPrerequisiteJobs;
     execute dbo.StartCovidJobs;
     waitfor delay '00:30'; 
     execute dbo.StartSARS2Jobs;
-  --end
-  --else
-  --begin
-  --  execute dbo.StartAndWaitForPrerequisiteJobs;
-  --  execute dbo.StartSARS2Jobs;
-  --  waitfor delay '00:40';
-  --  execute dbo.StartCovidJobs;
-  --end
+    waitfor delay '00:30'; 
+    execute dbo.ExtractAll;
 
   execute dbo.SetProcessingStatus @status, @name, @instance;
 

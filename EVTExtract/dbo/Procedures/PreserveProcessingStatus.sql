@@ -27,7 +27,7 @@ begin
 
   declare @jobCount int;
   
-  select @jobCount = 1 + count(*) from msdb.dbo.sysjobs where name like 'Extract%' and name not like 'ExtractAll%' and name not like '%Archive'; --> + 1 for one job that does two documents
+  select @jobCount = 1 + count(*) from msdb.dbo.sysjobs where name like 'Extract%' and name not like '%Archive'; --> + 1 for one job that does two documents
 
   insert dbo.ProcessingStatusCycle( CycleId , TotalJobs ) values( @historyId, @jobCount )
 
