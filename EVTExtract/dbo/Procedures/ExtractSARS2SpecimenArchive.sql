@@ -17,9 +17,9 @@ begin
   execute dbo.SetProcessingStatus @status, @name, @instance;
   begin try
 
-    truncate table dbo.SARS2_SPECIMEN_ARCHIVE;
+    truncate table dbo.SARS2_SPECIMEN_ARCHIVE2;
 
-    insert dbo.SARS2_SPECIMEN_ARCHIVE 
+    insert dbo.SARS2_SPECIMEN_ARCHIVE2 
       (       
         [PR_INCIDENTID], [Specimen Types], [Specimen Collected Date], [Specimen Received Date], [Result], [Specimen Notes], [Lab Report ID]
       )

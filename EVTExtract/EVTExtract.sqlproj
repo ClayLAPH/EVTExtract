@@ -382,6 +382,14 @@
     <Build Include="dbo\Procedures\ExtractSARS2PersonArchive.sql" />
     <Build Include="dbo\Procedures\ExtractSARS2SpecimenArchive.sql" />
     <Build Include="dbo\Procedures\ExtractSARS2UdfDataArchive.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_CONTACT_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_INCIDENT_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_LAB_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_OUTBREAK_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_OUTBREAK_PROCESS_STATUS_HISTORY_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_PERSON_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_SPECIMEN_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_UDF_DATA_ARCHIVE2.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj">

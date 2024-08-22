@@ -17,8 +17,8 @@ begin
   execute dbo.SetProcessingStatus @status, @name, @instance;
 
   begin try
-    truncate table dbo.SARS2_OUTBREAK_ARCHIVE;
-    insert dbo.SARS2_OUTBREAK_ARCHIVE (
+    truncate table dbo.SARS2_OUTBREAK_ARCHIVE2;
+    insert dbo.SARS2_OUTBREAK_ARCHIVE2 (
       OUTB_RowID, OUTB_Legacy_RowID, OUTB_Disease, OUTB_OutbreakNumber, OUTB_IsHealthFacilityOutbreak, OUTB_OutbreakLocation, OUTB_District, OUTB_DateofOnset, 
       OUTB_DateCreated, OUTB_DateClosed, OUTB_ProcessStatus, OUTB_ResolutionStatus, OUTB_Notes, OUTB_OutbreakType, OUTB_OUTBREAKID, OUTB_COUNT, OUTB_USERDR, 
       OUTB_HEALTHFACILITYCODE_DR, OUTB_DISEASECODE_DR, OUTB_DISSHORTNAME, OUTB_LOCATIONDR, OUTB_DISTRICTCODE_DR, OUTB_SPACODE_DR, OUTB_OUTBREAKTYPECODE_DR, 

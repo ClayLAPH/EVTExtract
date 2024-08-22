@@ -17,8 +17,8 @@ begin
   execute dbo.SetProcessingStatus @status, @name, @instance;
 
   begin try
-    truncate table dbo.SARS2_OUTBREAK_PROCESS_STATUS_HISTORY_ARCHIVE;
-    insert dbo.SARS2_OUTBREAK_PROCESS_STATUS_HISTORY_ARCHIVE
+    truncate table dbo.SARS2_OUTBREAK_PROCESS_STATUS_HISTORY_ARCHIVE2;
+    insert dbo.SARS2_OUTBREAK_PROCESS_STATUS_HISTORY_ARCHIVE2
     ( OUTB_RowID, AUD_ID, AUD_OldValue, AUD_NewValue, AUD_ActionDate, AUD_Username )
     select 
       OUTB_RowID, AUD_ID, AUD_OldValue, AUD_NewValue, AUD_ActionDate, AUD_Username 

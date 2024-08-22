@@ -32,7 +32,30 @@ from
     O.OUTB_Disease,
     O.OUTB_OutbreakNumber,
     O.OUTB_OUTBREAKID,
-    O.OUTB_District
+    O.OUTB_District,
+    NCVOBTeam = substring((
+      select  distinct ',' + convert(varchar(max), UDFA.FIELD_VALUE) 
+      from    dbo.COVID_OUTBREAK_UDF_DATA AS UDFA with (nolock)
+      where   
+        UDFA.RECORD_ID      =  UDF.RECORD_ID and 
+        UDFA.FIELD_DEF_DR   = 'NCVOBTeam' and 
+        UDFA.SECTION_DEF_DR = 'NCVOBSiteVisit' and
+        UDFA.FORM_DEF_DR    = 'NCVOBTab'
+      order by -- to get 'distinct', the select expressions must be in the  order by clause:
+        ',' + convert(varchar(max), UDFA.FIELD_VALUE)
+      for xml path ('') ), 2, 100000 ), 
+    NCVOBOtherTeam = substring((
+      select  distinct ',' + convert(varchar(max), UDFA.FIELD_VALUE)
+      from    dbo.COVID_OUTBREAK_UDF_DATA AS UDFA with (nolock)
+      where
+        UDFA.RECORD_ID = UDF.RECORD_ID and
+        UDFA.FIELD_DEF_DR='NCVOBOtherTeam' and 
+        UDFA.SECTION_DEF_DR = 'NCVOBSiteVisit' and
+        UDFA.FORM_DEF_DR = 'NCVOBTab'
+      order by -- to get 'distinct', the select expressions must be in the  order by clause:
+        ',' + convert(varchar(max), UDFA.FIELD_VALUE)
+      for xml path ('') ), 2, 100000 )
+
   from    
     dbo.COVID_OUTBREAK_UDF_DATA UDF with (nolock) 
     INNER JOIN 
@@ -47,8 +70,8 @@ pivot
   for FIELD_DEF_DR in 
   ( NCVOBVisitComments,
     NCVOBVisitDate,
-    NCVOBTeam,
-    NCVOBOtherTeam,
+--    NCVOBTeam,
+--    NCVOBOtherTeam,
     NCVOBTeamCondVisit,
     NCVOBVisitType,
     NCVOBSiteVisitNotWarranted

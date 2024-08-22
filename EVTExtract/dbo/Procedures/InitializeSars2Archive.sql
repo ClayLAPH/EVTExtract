@@ -22,7 +22,11 @@ begin
   execute dbo.StartAndWaitForPrerequisiteJobs;
   declare @keys table( DVPR_RowID int, DVPR_IncidentID int, DVPR_PersonDR int ) 
   truncate table internals.Sars2Archive;
-  insert @keys ( DVPR_RowID, DVPR_IncidentID, DVPR_PersonDR ) select pr.DVPR_RowID, pr.DVPR_IncidentID, pr.DVPR_PersonDR from [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr where DVPR_DiseaseCode_ID = 544041
+  
+  insert @keys ( DVPR_RowID, DVPR_IncidentID, DVPR_PersonDR ) 
+  select pr.DVPR_RowID, pr.DVPR_IncidentID, pr.DVPR_PersonDR 
+  from [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr 
+  where DVPR_DiseaseCode_ID = 544041 and pr.DVPR_CreateDate < '2024-07-01'
 
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2Person';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2Specimen';
