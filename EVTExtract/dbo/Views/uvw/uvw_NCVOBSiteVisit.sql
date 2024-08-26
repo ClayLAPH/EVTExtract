@@ -34,32 +34,32 @@ from
     O.OUTB_OUTBREAKID,
     O.OUTB_District,
     NCVOBTeam = substring((
-      select  distinct ',' + convert(varchar(max), UDFA.FIELD_VALUE) 
-      from    dbo.COVID_OUTBREAK_UDF_DATA AS UDFA with (nolock)
+      select  distinct ', ' + convert(varchar(max), UDFA.FIELD_VALUE) 
+      from    dbo.COVID_OUTBREAK_UDF_DATA AS UDFA
       where   
         UDFA.RECORD_ID      =  UDF.RECORD_ID and 
         UDFA.FIELD_DEF_DR   = 'NCVOBTeam' and 
         UDFA.SECTION_DEF_DR = 'NCVOBSiteVisit' and
         UDFA.FORM_DEF_DR    = 'NCVOBTab'
       order by -- to get 'distinct', the select expressions must be in the  order by clause:
-        ',' + convert(varchar(max), UDFA.FIELD_VALUE)
-      for xml path ('') ), 2, 100000 ), 
+        ', ' + convert(varchar(max), UDFA.FIELD_VALUE)
+      for xml path ('') ), 3, 100000 ), 
     NCVOBOtherTeam = substring((
-      select  distinct ',' + convert(varchar(max), UDFA.FIELD_VALUE)
-      from    dbo.COVID_OUTBREAK_UDF_DATA AS UDFA with (nolock)
+      select  distinct ', ' + convert(varchar(max), UDFA.FIELD_VALUE)
+      from    dbo.COVID_OUTBREAK_UDF_DATA AS UDFA
       where
-        UDFA.RECORD_ID = UDF.RECORD_ID and
-        UDFA.FIELD_DEF_DR='NCVOBOtherTeam' and 
+        UDFA.RECORD_ID      =  UDF.RECORD_ID and
+        UDFA.FIELD_DEF_DR   = 'NCVOBOtherTeam' and 
         UDFA.SECTION_DEF_DR = 'NCVOBSiteVisit' and
-        UDFA.FORM_DEF_DR = 'NCVOBTab'
+        UDFA.FORM_DEF_DR    = 'NCVOBTab'
       order by -- to get 'distinct', the select expressions must be in the  order by clause:
-        ',' + convert(varchar(max), UDFA.FIELD_VALUE)
-      for xml path ('') ), 2, 100000 )
+        ', ' + convert(varchar(max), UDFA.FIELD_VALUE)
+      for xml path ('') ), 3, 100000 )
 
   from    
-    dbo.COVID_OUTBREAK_UDF_DATA UDF with (nolock) 
+    dbo.COVID_OUTBREAK_UDF_DATA UDF 
     INNER JOIN 
-    dbo.COVID_OUTBREAK O with (nolock)
+    dbo.COVID_OUTBREAK O
     on 
       UDF.RECORD_ID = O.OUTB_ROWID
   where   

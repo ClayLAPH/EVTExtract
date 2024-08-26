@@ -50,7 +50,12 @@ begin
       Marital_Status, Medical_Record_Number, Most_Recent_Lab_Result, Most_Recent_Lab_Result_Value, Native_Hawaiian_or_Other_Pacific, Occupation_Setting_Type, 
       Other___Specify, Outbreak_IDs, Parent_or_Guardian_Name, Priority, Provider_Name, Report_Source, Secondary_District, Suspected_Exposure_Types, Type_of_Contact, 
       Unknown___Specify, White___Specify
-    from dbo.SARS2_INCIDENT;
+    from 
+        dbo.SARS2_INCIDENT si
+        inner join
+        internals.Sars2Archive sa
+        on
+            si.PR_INCIDENTID = sa.DVPR_IncidentID
     select @rows = @@rowcount;
     select @status = 'ends';
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;
