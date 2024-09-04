@@ -51,11 +51,8 @@ begin
       Other___Specify, Outbreak_IDs, Parent_or_Guardian_Name, Priority, Provider_Name, Report_Source, Secondary_District, Suspected_Exposure_Types, Type_of_Contact, 
       Unknown___Specify, White___Specify
     from 
-        dbo.SARS2_INCIDENT si
-        inner join
-        internals.Sars2Archive sa
-        on
-            si.PR_INCIDENTID = sa.DVPR_IncidentID
+        dbo.SARS2_INCIDENT_ARCHIVE_VIEW si
+
     select @rows = @@rowcount;
     select @status = 'ends';
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;

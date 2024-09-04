@@ -32,11 +32,12 @@ begin
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2Specimen';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2Lab';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2UdfData';
-  execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2IncidentArchive';
+  execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2Incident';
   execute dbo.WaitForJobs 'SARS2 jobs'
 
   insert internals.Sars2Archive ( DVPR_RowID, DVPR_IncidentID, DVPR_PersonDR ) select DVPR_RowID, DVPR_IncidentID, DVPR_PersonDR from @keys
 
+  execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2IncidentArchive';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2PersonArchive';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2LabArchive';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2OutbreakArchive';

@@ -17,7 +17,15 @@ begin
   execute dbo.SetProcessingStatus @status, @name, @instance;
 
   begin try
-    select @rows = count(*) from dbo.SARS2_INCIDENT;
+    select @rows = count(*) 
+    from 
+        dbo.SARS2_INCIDENT si
+    where si.PR_INCIDENTID not in 
+    (
+        select PR_INCIDENTID 
+        from internals.Sars2Archive
+    );
+
     select @status = 'ends';
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;
   end try
