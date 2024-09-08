@@ -118,4 +118,4 @@ select
 from
   [$(LACCovid)].covid.SARS2_INCIDENT
 where
-  PR_ROWID in ( select DVPR_RowID from internals.Sars2Archive )
+  PR_ROWID in ( select distinct DVPR_RowID from internals.Sars2Archive )

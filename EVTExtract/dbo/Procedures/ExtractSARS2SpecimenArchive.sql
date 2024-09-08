@@ -26,11 +26,7 @@ begin
       select 
         [PR_INCIDENTID], [Specimen Types], [Specimen Collected Date], [Specimen Received Date], [Result], [Specimen Notes], [Lab Report ID]
       from 
-        dbo.SARS2_SPECIMEN c
-        inner join
-        internals.Sars2Archive sa
-        on
-            c.PR_INCIDENTID = sa.DVPR_IncidentID
+        dbo.SARS2_SPECIMEN c where c.PR_INCIDENTID in (select distinct dvpr_IncidentId from internals.Sars2Archive) 
       option
         ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 

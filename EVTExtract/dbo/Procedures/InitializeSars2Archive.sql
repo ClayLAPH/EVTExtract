@@ -46,6 +46,54 @@ begin
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2UdfDataArchive';
   execute dbo.WaitForJobs 'SARS2 Archive jobs'
 
+
+    delete
+        SARS2_INCIDENT_ARCHIVE2
+    from 
+        SARS2_INCIDENT_ARCHIVE a1
+        inner join
+        SARS2_INCIDENT_ARCHIVE2 a2
+        on
+        a1.PR_INCIDENTID = a2.PR_INCIDENTID
+        and
+        a1.PR_ROWID = a2.PR_ROWID;
+
+    delete SARS2_LAB_ARCHIVE2
+    from 
+        SARS2_LAB_ARCHIVE a1
+        inner join 
+        SARS2_LAB_ARCHIVE2 a2
+        on
+        a1.LabReportID = a2.LabReportID;
+
+    delete  
+        SARS2_SPECIMEN_ARCHIVE2
+    from 
+        SARS2_SPECIMEN_ARCHIVE a1
+        inner join 
+        SARS2_SPECIMEN_ARCHIVE2 a2
+        on
+        a1.[Lab Report ID] = a2.[Lab Report ID];
+
+
+    delete SARS2_PERSON_ARCHIVE2
+    from
+        SARS2_PERSON_ARCHIVE a1
+        inner join
+        SARS2_PERSON_ARCHIVE2 a2
+        on
+        a1.PER_ROWID = a2.PER_ROWID
+
+    delete SARS2_UDF_DATA_ARCHIVE2
+    from 
+        SARS2_UDF_DATA_ARCHIVE a1
+        inner join
+        SARS2_UDF_DATA_ARCHIVE2 a2
+        on
+        a1.RECORD_ID = a2.RECORD_ID
+        and
+        a1.FIELD_DEF_DR = a2.FIELD_DEF_DR;
+
   execute dbo.SetProcessingStatus @status, @name, @instance;
 
   return 0;
