@@ -36,7 +36,7 @@ from
         I.PR_DISTRICT,
         SOGIRaceEthnOth = substring((
           select  distinct ', ' + convert(varchar(max), UDFA.FIELD_VALUE) 
-          from    dbo.COVID_OUTBREAK_UDF_DATA AS UDFA
+          from    dbo.COVID_UDF_DATA AS UDFA
           where   
             UDFA.RECORD_ID      =  UDF.RECORD_ID and 
             UDFA.FIELD_DEF_DR   = 'SOGIRaceEthnOth' and 
@@ -46,7 +46,7 @@ from
           for xml path ('') ), 3, 100000 ), 
         SOGIRaceEthn = substring((
           select  distinct ', ' + convert(varchar(max), UDFA.FIELD_VALUE)
-          from    dbo.COVID_OUTBREAK_UDF_DATA AS UDFA
+          from    dbo.COVID_UDF_DATA AS UDFA
           where
             UDFA.RECORD_ID      =  UDF.RECORD_ID and
             UDFA.FIELD_DEF_DR   = 'SOGIRaceEthn' and 
