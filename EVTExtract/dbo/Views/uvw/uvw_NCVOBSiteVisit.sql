@@ -51,7 +51,8 @@ from
         UDFA.RECORD_ID      =  UDF.RECORD_ID and
         UDFA.FIELD_DEF_DR   = 'NCVOBOtherTeam' and 
         UDFA.SECTION_DEF_DR = 'NCVOBSiteVisit' and
-        UDFA.FORM_DEF_DR    = 'NCVOBTab'
+        UDFA.FORM_DEF_DR    = 'NCVOBTab'       and
+        UDFA.FIELD_VALUE   != ''
       order by -- to get 'distinct', the select expressions must be in the  order by clause:
         ', ' + convert(varchar(max), UDFA.FIELD_VALUE)
       for xml path ('') ), 3, 100000 )

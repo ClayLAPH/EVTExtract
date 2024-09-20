@@ -36,7 +36,9 @@ begin
       PER_ETHNICITYCODE_DR, PER_OCCUPATIONCODE_DR, PER_NAMESUFFIX, PER_RECORDCREATEDBY, PER_WORKSCHOOLLOCATION, PER_WORKSCHOOLCONTACT, PER_PRIMARYLANGUAGE_DR, PER_PRIMARYLANGUAGE,
       PER_EMAIL, PER_ELECTRONICCONTACT, PER_CURRENTVERSION, PER_DATEOFDEATH, PER_PERSONSTATUS, PER_STATUSFLAG, PER_PRIMARYNATIONALITY, PER_THIRDNAME, PER_FOURTHNAME, PER_NAMEPREFIX
     from 
-      dbo.SARS2_PERSON sp where sp.PER_ROWID in (select distinct DVPR_PersonDR from internals.Sars2Archive)
+      dbo.SARS2_PERSON sp where 
+        sp.PER_ROWID in ( select dvpr_persondr from internals.Sars2Archive2 ) and
+        sp.PER_ROWID not in ( select dvpr_persondr from internals.Sars2Archive )
 
     option
       ( recompile, maxdop 8, use hint( 'enable_parallel_plan_preference' ) );

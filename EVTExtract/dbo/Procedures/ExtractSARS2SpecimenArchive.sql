@@ -26,7 +26,12 @@ begin
       select 
         [PR_INCIDENTID], [Specimen Types], [Specimen Collected Date], [Specimen Received Date], [Result], [Specimen Notes], [Lab Report ID]
       from 
-        dbo.SARS2_SPECIMEN c where c.PR_INCIDENTID in (select distinct dvpr_IncidentId from internals.Sars2Archive) 
+        dbo.SARS2_SPECIMEN c
+        where 
+            c.PR_INCIDENTID in (select distinct DVPR_IncidentID from internals.Sars2Archive2) 
+            and
+            c.PR_INCIDENTID not in (select distinct DVPR_IncidentID from internals.Sars2Archive) 
+
       option
         ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 

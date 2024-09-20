@@ -28,7 +28,9 @@ begin
       from 
         internals.Specimens c with (nolock) 
       where 
-        DiseaseCode = 544041
+        DiseaseCode = 544041 and 
+        [PR_INCIDENTID] not in (select DVPR_IncidentID from internals.Sars2Archive) and
+        [PR_INCIDENTID] not in (select DVPR_IncidentID from internals.Sars2Archive2)
       --order by 
       --  [PR_INCIDENTID], [Lab Report ID]
       option

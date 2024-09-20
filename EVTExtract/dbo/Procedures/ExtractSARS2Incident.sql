@@ -20,11 +20,10 @@ begin
     select @rows = count(*) 
     from 
         dbo.SARS2_INCIDENT si
-    where si.PR_INCIDENTID not in 
-    (
-        select PR_INCIDENTID 
-        from internals.Sars2Archive
-    );
+    where 
+        si.PR_INCIDENTID not in ( select PR_INCIDENTID from internals.Sars2Archive ) and
+        si.PR_INCIDENTID not in ( select PR_INCIDENTID from internals.Sars2Archive2 )
+    ;
 
     select @status = 'ends';
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;

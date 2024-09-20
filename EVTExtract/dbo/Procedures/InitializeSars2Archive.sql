@@ -16,18 +16,14 @@ begin
     @instance int = next value for dbo.InstanceSequence;
 
   execute dbo.PreserveProcessingStatus;
-
   execute dbo.SetProcessingStatus @status, @name, @instance;
 
   execute dbo.StartAndWaitForPrerequisiteJobs;
-  declare @keys table( DVPR_RowID int, DVPR_IncidentID int, DVPR_PersonDR int ) 
-  truncate table internals.Sars2Archive;
-  
-  insert @keys ( DVPR_RowID, DVPR_IncidentID, DVPR_PersonDR ) 
-  select pr.DVPR_RowID, pr.DVPR_IncidentID, pr.DVPR_PersonDR 
-  from [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr 
-  where DVPR_DiseaseCode_ID = 544041 and pr.DVPR_CreateDate < '2024-07-01'
 
+  -- truncate archive2 (probably empty)
+  truncate table internals.Sars2Archive2;    
+
+  -- do regular extract for sars2...
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2Person';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2Specimen';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2Lab';
@@ -35,8 +31,13 @@ begin
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2Incident';
   execute dbo.WaitForJobs 'SARS2 jobs'
 
-  insert internals.Sars2Archive ( DVPR_RowID, DVPR_IncidentID, DVPR_PersonDR ) select DVPR_RowID, DVPR_IncidentID, DVPR_PersonDR from @keys
+  -- catch the keys...
+  insert internals.Sars2Archive2 ( DVPR_RowID, DVPR_IncidentID, DVPR_PersonDR )
+  select pr.DVPR_RowID, pr.DVPR_IncidentID, pr.DVPR_PersonDR 
+  from [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr 
+  where DVPR_DiseaseCode_ID = 544041 and pr.DVPR_CreateDate < '2024-07-01'
 
+  -- extract archives...
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2IncidentArchive';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2PersonArchive';
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2LabArchive';
@@ -46,7 +47,7 @@ begin
   execute msdb.dbo.sp_start_job @job_name = 'ExtractSARS2UdfDataArchive';
   execute dbo.WaitForJobs 'SARS2 Archive jobs'
 
-
+  /*
     delete
         SARS2_INCIDENT_ARCHIVE2
     from 
@@ -93,6 +94,7 @@ begin
         a1.RECORD_ID = a2.RECORD_ID
         and
         a1.FIELD_DEF_DR = a2.FIELD_DEF_DR;
+    */
 
   execute dbo.SetProcessingStatus @status, @name, @instance;
 

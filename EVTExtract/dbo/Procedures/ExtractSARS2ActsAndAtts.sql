@@ -32,7 +32,8 @@ begin
       pr.DVPR_DiseaseCode_ID = 544041
       and
       pr.DVPR_RowID not in ( select DVPR_RowID from internals.Sars2Archive )
-
+      and
+      pr.DVPR_RowID not in ( select DVPR_RowID from internals.Sars2Archive2 )
 
     insert internals.SARS2ActsAndAtts( id, kind, valueBool, valueString_Txt, valueCode_Id )
     select
