@@ -118,6 +118,6 @@ select
 from
   [$(LACCovid)].covid.SARS2_INCIDENT
 where
-  PR_ROWID not in ( select DVPR_RowID from internals.Sars2Archive )
+  PR_INCIDENTID not in ( select DVPR_IncidentID from internals.Sars2Archive )
   and
-  PR_ROWID not in ( select DVPR_RowID from internals.Sars2Archive2 )
+  PR_INCIDENTID not in ( select DVPR_IncidentID from internals.Sars2Archive2 )

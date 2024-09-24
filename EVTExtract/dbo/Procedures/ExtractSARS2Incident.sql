@@ -19,11 +19,10 @@ begin
   begin try
     select @rows = count(*) 
     from 
-        dbo.SARS2_INCIDENT si
+        [$(LACCovid)].covid.SARS2_INCIDENT si
     where 
-        si.PR_INCIDENTID not in ( select PR_INCIDENTID from internals.Sars2Archive ) and
-        si.PR_INCIDENTID not in ( select PR_INCIDENTID from internals.Sars2Archive2 )
-    ;
+        si.PR_INCIDENTID not in ( select sa.DVPR_IncidentID from internals.Sars2Archive sa ) and
+        si.PR_INCIDENTID not in ( select sa.DVPR_IncidentID from internals.Sars2Archive2 sa);
 
     select @status = 'ends';
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;

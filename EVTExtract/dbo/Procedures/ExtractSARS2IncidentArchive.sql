@@ -51,7 +51,7 @@ begin
       Other___Specify, Outbreak_IDs, Parent_or_Guardian_Name, Priority, Provider_Name, Report_Source, Secondary_District, Suspected_Exposure_Types, Type_of_Contact, 
       Unknown___Specify, White___Specify
     from 
-        dbo.SARS2_INCIDENT si
+        [$(LACCovid)].covid.SARS2_INCIDENT si
     where 
         si.PR_INCIDENTID in (select sa2.DVPR_IncidentID from internals.Sars2Archive2 sa2)
         and

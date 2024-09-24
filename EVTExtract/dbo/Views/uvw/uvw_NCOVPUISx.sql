@@ -289,13 +289,13 @@ from
     NCOVPUISxSx = (
       select  convert(varchar(max), UDFA.FIELD_CONCEPT_CODE_VALUE) + ', '
       from    dbo.COVID_UDF_DATA AS UDFA with (nolock)
-      where   UDFA.RECORD_ID = UDF.RECORD_ID AND UDFA.[FIELD_DEF_DR]='NCOVPUISxSx'
+      where   UDFA.RECORD_ID = UDF.RECORD_ID AND UDFA.[FIELD_DEF_DR]='NCOVPUISxSx' and UDFA.SECTION_INSTANCE_ID = UDF.SECTION_INSTANCE_ID
       order by UDFA.RECORD_ID
       for xml path ('') ), 
     NCOVPUISxComorbid = (
       select  convert(varchar(max), UDFA.FIELD_CONCEPT_CODE_VALUE) + ', '
       from    dbo.COVID_UDF_DATA AS UDFA with (nolock)
-      where   UDFA.RECORD_ID = UDF.RECORD_ID AND UDFA.FIELD_DEF_DR='NCOVPUISxComorbid'
+      where   UDFA.RECORD_ID = UDF.RECORD_ID AND UDFA.FIELD_DEF_DR='NCOVPUISxComorbid' and UDFA.SECTION_INSTANCE_ID = UDF.SECTION_INSTANCE_ID
       order by UDFA.RECORD_ID
       for xml path ('') )
   from    
