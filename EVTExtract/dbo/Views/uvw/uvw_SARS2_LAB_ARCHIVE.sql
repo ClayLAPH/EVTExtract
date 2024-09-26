@@ -105,9 +105,9 @@ select
   ArchiveVersion                                 = 1
 
 from    
-  dbo.SARS2_LAB_ARCHIVE lab 
-  inner join 
-  dbo.SARS2_INCIDENT_ARCHIVE incident
+    dbo.SARS2_LAB_ARCHIVE  lab
+    inner join 
+    dbo.SARS2_INCIDENT_ARCHIVE incident
   on 
     lab.IncidentIDInt = incident.PR_INCIDENTID
 
@@ -219,9 +219,8 @@ select
   ArchiveVersion                                 = 2
 
 from    
-  dbo.SARS2_LAB_ARCHIVE2 lab 
-  inner join 
-  dbo.SARS2_INCIDENT_ARCHIVE2 incident
+    dbo.SARS2_LAB_ARCHIVE2  lab
+    inner join 
+    dbo.SARS2_INCIDENT_ARCHIVE2 incident
   on 
     lab.IncidentIDInt = incident.PR_INCIDENTID
-

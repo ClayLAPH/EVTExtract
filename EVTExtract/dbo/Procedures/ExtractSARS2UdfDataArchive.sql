@@ -26,8 +26,18 @@ begin
     select 
       RECORD_ID, FORM_INSTANCE_ID, FORM_DEF_DR, Form_DEF_ID, FORM_NAME, FORM_SHOW_IN_CMR, FORM_SHOW_IN_NCM, FORM_DESCRIPTION, FORM_CREATEDATE, FORM_NUMBER, FORM_IsMultipleInstance, SECTION_INSTANCE_ID, SECTION_DEF_DR, SECTION_NAME, SECTION_STATUS, SECTION_TYPE, SECTION_NUMBER, FIELD_INSTANCE_ID, FIELD_DEF_DR, FIELD_NAME, FIELD_IS_REQUIRED, FIELD_VALUE, FIELD_CONCEPT_CODE_VALUE, FIELD_STATUS, FIELD_TYPE
     from 
-      dbo.SARS2_UDF_DATA u where u.RECORD_ID in (select DVPR_RowID from internals.Sars2Archive2) 
-
+      internals.UDFData u 
+    where 
+      u.RECORD_ID in
+      ( select 
+          pr.DVPR_RowID 
+        from  
+          [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr
+        where 
+          pr.DVPR_DiseaseCode_ID = 544041 and 
+          pr.DVPR_RowID not in ( select DVPR_RowID from internals.Sars2Archive )  and
+          pr.DVPR_RowID     in ( select DVPR_RowID from internals.Sars2Archive2)
+     )
     option
       ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 

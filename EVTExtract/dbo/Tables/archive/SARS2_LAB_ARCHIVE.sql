@@ -1,8 +1,8 @@
 ﻿create table dbo.SARS2_LAB_ARCHIVE(
 	IncidentID varchar(50) NULL,
-	IncidentIDInt int NULL,
+	IncidentIDInt int NULL index [SARS2_LAB_ARCHIVE.IncidentIDInt.Index],
 	PHRECORDID int NOT NULL,
-	LabReportID int NOT NULL,
+	LabReportID int NOT NULL index [SARS2_LAB_ARCHIVE.LabReportID.Index],
 	ACCESSIONNUMBER varchar(300) NULL,
 	HL7FILENAME varchar(255) NULL,
 	ABNORMALFLAG varchar(255) NULL,

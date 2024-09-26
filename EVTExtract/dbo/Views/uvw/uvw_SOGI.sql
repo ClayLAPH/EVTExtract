@@ -35,25 +35,22 @@ from
         I.PR_INCIDENTID, 
         I.PR_DISTRICT,
         SOGIRaceEthnOth = substring((
-          select  distinct ', ' + convert(varchar(max), UDFA.FIELD_VALUE) 
+          select  ', ' + convert(varchar(max), UDFA.FIELD_VALUE) 
           from    dbo.COVID_UDF_DATA AS UDFA
           where   
             UDFA.RECORD_ID      =  UDF.RECORD_ID and 
             UDFA.SECTION_INSTANCE_ID = UDF.SECTION_INSTANCE_ID and
             UDFA.FIELD_DEF_DR   = 'SOGIRaceEthnOth' and 
             UDFA.SECTION_DEF_DR = 'SOGIV01' 
-          order by -- to get 'distinct', the select expressions must be in the  order by clause:
-            ', ' + convert(varchar(max), UDFA.FIELD_VALUE)
           for xml path ('') ), 3, 100000 ), 
         SOGIRaceEthn = substring((
-          select  distinct ', ' + convert(varchar(max), UDFA.FIELD_VALUE)
+          select  ', ' + convert(varchar(max), UDFA.FIELD_VALUE)
           from    dbo.COVID_UDF_DATA AS UDFA
           where
             UDFA.RECORD_ID      =  UDF.RECORD_ID and
+            UDFA.SECTION_INSTANCE_ID = UDF.SECTION_INSTANCE_ID and
             UDFA.FIELD_DEF_DR   = 'SOGIRaceEthn' and 
             UDFA.SECTION_DEF_DR = 'SOGIV01' 
-          order by -- to get 'distinct', the select expressions must be in the  order by clause:
-            ', ' + convert(varchar(max), UDFA.FIELD_VALUE)
           for xml path ('') ), 3, 100000 )
 
     from    
