@@ -1,0 +1,10 @@
+﻿CREATE FUNCTION [dbo].[FN_GetUDFrmIDNameByUCSID] (@ID INT)
+    RETURNS VARCHAR(255)
+AS
+BEGIN
+    DECLARE @FRM_ID VARCHAR(255)
+    DECLARE @FRM_Name VARCHAR(255)
+    SELECT @FRM_Name = fullName FROM V_UnifiedCodeSet (nolock) WHERE ID = @ID
+    SELECT @FRM_ID =FRM_ID FROM VCP_UDForm (nolock) WHERE SubjCode_ID = @ID
+    RETURN @FRM_Name+'('+@FRM_ID+')'
+END

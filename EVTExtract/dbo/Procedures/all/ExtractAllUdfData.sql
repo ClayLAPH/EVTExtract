@@ -27,7 +27,8 @@ begin
       pr.DVPR_DiseaseCode_ID,
       RECORD_ID, FORM_INSTANCE_ID, FORM_DEF_DR, Form_DEF_ID, FORM_NAME, FORM_SHOW_IN_CMR, FORM_SHOW_IN_NCM, FORM_DESCRIPTION, FORM_CREATEDATE, FORM_NUMBER, FORM_IsMultipleInstance, SECTION_INSTANCE_ID, SECTION_DEF_DR, SECTION_NAME, SECTION_STATUS, SECTION_TYPE, SECTION_NUMBER, FIELD_INSTANCE_ID, FIELD_DEF_DR, FIELD_NAME, FIELD_IS_REQUIRED, FIELD_VALUE, FIELD_CONCEPT_CODE_VALUE, FIELD_STATUS, FIELD_TYPE
     from 
-      internals.UDFData u with (nolock) 
+      --internals.UDFData u with (nolock)                 --> per 1945
+      [$(PRD_APHIM_UODS)].AtlasPublic.View_UODS_UDFData u --> per 1945
       inner join
       internals.allincidentpersonalrecordkeys prk with (nolock)
       on
@@ -36,6 +37,8 @@ begin
       [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord pr with (nolock)
       on
         prk.PR_ROWID = pr.DVPR_RowID
+        and
+        prk.PR_PERSONID = pr.DVPR_PersonDR
     option
       ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 

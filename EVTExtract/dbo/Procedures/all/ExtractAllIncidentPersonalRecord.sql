@@ -60,6 +60,8 @@ begin
     internals.allincidentpersonalrecordkeys prk with (nolock)
     on
       pr.PR_ROWID = prk.PR_ROWID
+      and
+      pr.PR_PERSONDR = prk.PR_PERSONID
   option 
     ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );
 

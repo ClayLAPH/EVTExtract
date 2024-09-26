@@ -6,6 +6,7 @@ select
   NCVOBOtherTeam,
   NCVOBTeamCondVisit,
   NCVOBVisitType,
+  NCVOBSiteVisitNotWarranted,
   DIID = RECORD_ID,
   INSTANCEID = OUTB_OUTBREAKID,
   UDSectionActID = SECTION_INSTANCE_ID,
@@ -31,11 +32,21 @@ from
     O.OUTB_Disease,
     O.OUTB_OutbreakNumber,
     O.OUTB_OUTBREAKID,
-    O.OUTB_District
+    O.OUTB_District,
+    NCVOBTeam = substring((
+      select  ', ' + convert(varchar(max), UDFA.FIELD_VALUE) 
+      from    dbo.COVID_OUTBREAK_UDF_DATA AS UDFA
+      where   
+        UDFA.RECORD_ID      =  UDF.RECORD_ID and 
+        udfa.SECTION_INSTANCE_ID = UDF.SECTION_INSTANCE_ID and
+        UDFA.FIELD_DEF_DR   = 'NCVOBTeam' and 
+        UDFA.SECTION_DEF_DR = 'NCVOBSiteVisit' and
+        UDFA.FORM_DEF_DR    = 'NCVOBTab'
+      for xml path ('') ), 3, 100000 )
   from    
-    dbo.COVID_OUTBREAK_UDF_DATA UDF with (nolock) 
+    dbo.COVID_OUTBREAK_UDF_DATA UDF 
     INNER JOIN 
-    dbo.COVID_OUTBREAK O with (nolock)
+    dbo.COVID_OUTBREAK O
     on 
       UDF.RECORD_ID = O.OUTB_ROWID
   where   
@@ -46,9 +57,10 @@ pivot
   for FIELD_DEF_DR in 
   ( NCVOBVisitComments,
     NCVOBVisitDate,
-    NCVOBTeam,
+--    NCVOBTeam,
     NCVOBOtherTeam,
     NCVOBTeamCondVisit,
-    NCVOBVisitType
+    NCVOBVisitType,
+    NCVOBSiteVisitNotWarranted
   )
 ) PivotTable

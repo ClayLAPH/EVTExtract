@@ -1,0 +1,72 @@
+﻿create procedure dbo.ExtractSARS2PersonArchive
+  @isRestart tinyint = 0
+as
+begin
+
+  set nocount on;
+  declare 
+    @name sysname = 'SARS2_PERSON_ARCHIVE',
+    @instance int = next value for dbo.InstanceSequence,
+    @status sysname = 'starts',
+    @rows int = 0,
+    @messageText nvarchar(max) = null,
+    @hasError bit = 0;
+
+  --set transaction isolation level snapshot
+
+  execute dbo.SetProcessingStatus @status, @name, @instance;
+  begin try
+    
+    truncate table dbo.SARS2_PERSON_ARCHIVE2;
+
+    insert dbo.SARS2_PERSON_ARCHIVE2
+    (
+      PER_ROWID, PER_LEGACY_ROWID, PER_COUNTRYOFBIRTHDR, PER_CELLPHONE, PER_DATEOFARRIVAL, PER_OCCUPATIONLOCATION, PER_OCCUPATIONSPECIFY, PER_OCCUPATIONSETTINGTYPEDR,
+      PER_OCCUPATIONSETTINGTYPESPECIFY, PER_ROOTID, PER_LASTNAME, PER_FIRSTNAME, PER_MIDDLENAME, PER_SSN, PER_HOMEPHONE, PER_WORKPHONE, PER_STREETADDRESS, PER_APARTMENT,
+      PER_CITY, PER_STATE, PER_STATENUMBER, PER_ZIP, PER_ClientID, PER_COUNTYOFRESIDENCE, PER_CENSUSTRACT, PER_LATITUDE, PER_LONGITUDE, PER_ADDRESSSTANDARDIZED, PER_COUNTYFIPS,
+      PER_COUNTY, PER_CENSUSBLOCK, PER_ZIPPLUS4, PER_COUNTRY, PER_COUNTRY_NAME, PER_DOB, PER_SEX, PER_RACE, PER_ETHNICITY, PER_OCCUPATION, PER_SEXCODE_DR, PER_RACECODE_DR,
+      PER_ETHNICITYCODE_DR, PER_OCCUPATIONCODE_DR, PER_NAMESUFFIX, PER_RECORDCREATEDBY, PER_WORKSCHOOLLOCATION, PER_WORKSCHOOLCONTACT, PER_PRIMARYLANGUAGE_DR, PER_PRIMARYLANGUAGE,
+      PER_EMAIL, PER_ELECTRONICCONTACT, PER_CURRENTVERSION, PER_DATEOFDEATH, PER_PERSONSTATUS, PER_STATUSFLAG, PER_PRIMARYNATIONALITY, PER_THIRDNAME, PER_FOURTHNAME, PER_NAMEPREFIX
+    )
+    select distinct
+      PER_ROWID, PER_LEGACY_ROWID, PER_COUNTRYOFBIRTHDR, PER_CELLPHONE, PER_DATEOFARRIVAL, PER_OCCUPATIONLOCATION, PER_OCCUPATIONSPECIFY, PER_OCCUPATIONSETTINGTYPEDR,
+      PER_OCCUPATIONSETTINGTYPESPECIFY, PER_ROOTID, PER_LASTNAME, PER_FIRSTNAME, PER_MIDDLENAME, PER_SSN, PER_HOMEPHONE, PER_WORKPHONE, PER_STREETADDRESS, PER_APARTMENT,
+      PER_CITY, PER_STATE, PER_STATENUMBER, PER_ZIP, PER_ClientID, PER_COUNTYOFRESIDENCE, PER_CENSUSTRACT, PER_LATITUDE, PER_LONGITUDE, PER_ADDRESSSTANDARDIZED, PER_COUNTYFIPS,
+      PER_COUNTY, PER_CENSUSBLOCK, PER_ZIPPLUS4, PER_COUNTRY, PER_COUNTRY_NAME, PER_DOB, PER_SEX, PER_RACE, PER_ETHNICITY, PER_OCCUPATION, PER_SEXCODE_DR, PER_RACECODE_DR,
+      PER_ETHNICITYCODE_DR, PER_OCCUPATIONCODE_DR, PER_NAMESUFFIX, PER_RECORDCREATEDBY, PER_WORKSCHOOLLOCATION, PER_WORKSCHOOLCONTACT, PER_PRIMARYLANGUAGE_DR, PER_PRIMARYLANGUAGE,
+      PER_EMAIL, PER_ELECTRONICCONTACT, PER_CURRENTVERSION, PER_DATEOFDEATH, PER_PERSONSTATUS, PER_STATUSFLAG, PER_PRIMARYNATIONALITY, PER_THIRDNAME, PER_FOURTHNAME, PER_NAMEPREFIX
+    from 
+        internals.Person p
+        inner join
+        [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord ph
+        on
+            p.PER_ROWID = ph.DVPR_PersonDR and
+            ph.DVPR_DiseaseCode_ID = 544041 and
+            ph.DVPR_PersonDR not in (select DVPR_PersonDR from internals.Sars2Archive ) and
+            ph.DVPR_PersonDR     in (select DVPR_PersonDR from internals.Sars2Archive2)
+        
+
+    option
+      ( recompile, maxdop 8, use hint( 'enable_parallel_plan_preference' ) );
+
+    select @rows = @@rowcount, @status = 'ends';
+
+    execute dbo.SetProcessingStatus @status, @name, @instance, @rows;
+  end try
+  begin catch
+    select  @status = 'error', @messageText = error_message();
+    execute dbo.SetProcessingStatus @status, @name, @instance, null, @messageText;
+    select @hasError = 1;
+  end catch
+
+  if ( @hasError = 1 and @isRestart = 0 ) 
+  begin
+    waitfor delay '00:01';
+    execute dbo.ExtractSARS2PersonArchive @isRestart = 1;
+  end
+
+  return 0;
+
+end
+
+

@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[S_RequiredFields] (
+    [REQF_FormFieldID] INT NULL,
+    [REQF_ID]          INT IDENTITY (1, 1) NOT FOR REPLICATION NOT NULL,
+    [REQF_IsRequired]  BIT NULL,
+    CONSTRAINT [S_RequiredFields_PK] PRIMARY KEY CLUSTERED ([REQF_ID] ASC) WITH (FILLFACTOR = 95) ON [PRIMARY_IDX],
+    CONSTRAINT [FK_S_RequiredFields_S_FormField] FOREIGN KEY ([REQF_FormFieldID]) REFERENCES [dbo].[S_FormField] ([FIELD_ID]) NOT FOR REPLICATION
+) ON [PRIMARY_IDX];
+
+
+GO
+ALTER TABLE [dbo].[S_RequiredFields] NOCHECK CONSTRAINT [FK_S_RequiredFields_S_FormField];
+

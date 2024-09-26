@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[RMR_RuleDefinition] (
+    [RD_RowID]                    INT             IDENTITY (1, 1) NOT NULL,
+    [RD_RuleName]                 NVARCHAR (1000) NOT NULL,
+    [RD_SelectMostRecent]         BIT             DEFAULT ((0)) NOT NULL,
+    [RD_SkipIfMultipleMatch]      BIT             DEFAULT ((0)) NOT NULL,
+    [RD_JSON]                     NVARCHAR (MAX)  NOT NULL,
+    [RD_OrderBy]                  NVARCHAR (MAX)  NOT NULL,
+    [RD_Action_ImportOption]      VARCHAR (3)     NULL,
+    [RD_Action_DemoImportOption]  VARCHAR (3)     NULL,
+    [RD_Route_ProcessStatusDR]    INT             NULL,
+    [RD_Route_ResolutionStatusDR] INT             NULL,
+    [RD_Route_DistrictDR]         INT             NULL,
+    [RD_Route_InvestigatorDR]     INT             NULL,
+    [RD_Route_FinalDispositionDR] INT             NULL,
+    [RD_Route_ImportedStatusDR]   INT             NULL,
+    [RD_Route_DiseaseDR]          INT             NULL,
+    [RD_Route_IsAsymptomatic]     SMALLINT        NULL,
+    [RD_Route_IsPregnant]         SMALLINT        NULL,
+    [RD_Route_AutoCloseIncident]  BIT             NULL,
+    [RD_IsActive]                 BIT             NULL,
+    [RD_QueryExpression]          AS              ([dbo].[FN_RMR_GetQueryByRuleIDForColumn]([RD_RowID])),
+    [RD_TableAliasRefExpression]  AS              ([dbo].[FN_RMR_GetRuleTableAliasRefExpressionForColumn]([RD_RowID])),
+    [RD_IsQueryReturnRows]        AS              ([dbo].[FN_RMR_GetRuleIsQueryReturnRowsForColumn]([RD_RowID])),
+    CONSTRAINT [PK_RuleDefinition] PRIMARY KEY CLUSTERED ([RD_RowID] ASC) ON [RMR_DataIndexGroup],
+    CONSTRAINT [RMR_CHK_RD_SelectMostRecent_SkipIfMultipleMatch] CHECK (([RD_SelectMostRecent]&[RD_SkipIfMultipleMatch])<>(1))
+) ON [RMR_DataIndexGroup] TEXTIMAGE_ON [RMR_DataIndexGroup];
+

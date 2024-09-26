@@ -1,0 +1,14 @@
+﻿
+CREATE FUNCTION [dbo].[FN_GetOutbreakNumbersByPRID] (@PRID INT)
+	RETURNS VARCHAR(MAX)
+AS
+BEGIN
+	DECLARE @OBNumbers VARCHAR(MAX)
+	
+	SELECT @OBNumbers = dbo.STRCONCAT(OB.DVOB_OutbreakNumber) FROM  A_ActRelationship AR_OB (NOLOCK)
+	INNER JOIN DV_Outbreak OB (NOLOCK) On  OB.DVOB_RowID = AR_OB.Source_ID
+	WHERE AR_OB.Target_ID = @PRID AND AR_OB.METACODE = 'PR_OutbreakDR'
+
+	RETURN 	@OBNumbers
+END
+

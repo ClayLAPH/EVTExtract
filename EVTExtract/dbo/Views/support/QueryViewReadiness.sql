@@ -1,4 +1,4 @@
-﻿create view QueryViewReadiness as
+﻿CREATE view dbo.QueryViewReadiness as
 (
   select base.name view_name, base.StepOccurred available, base.CycleId cycle
   from
@@ -13,7 +13,7 @@ union all
     ( select 
         distinct v.view_name
       from
-        INFORMATION_SCHEMA.VIEW_TABLE_USAGE v
+        internals.VTU v
         inner join
         QueryProcessJobs j
         on
@@ -30,7 +30,7 @@ union all
             from
               sys.views v
               left outer join
-              INFORMATION_SCHEMA.VIEW_TABLE_USAGE vtu
+              internals.VTU vtu
               on
                 v.name = vtu.view_name
                 left outer join
@@ -53,7 +53,7 @@ union all
       select 
         v.view_name name, j.cycle, max(j.ended) available
       from
-        INFORMATION_SCHEMA.VIEW_TABLE_USAGE v
+        internals.VTU v
         inner join
         QueryProcessJobs j
         on

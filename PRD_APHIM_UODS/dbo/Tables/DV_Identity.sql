@@ -1,0 +1,69 @@
+﻿CREATE TABLE [dbo].[DV_Identity] (
+    [DVIDEN_LastName]         VARCHAR (100) NULL,
+    [DVIDEN_FirstName]        VARCHAR (100) NULL,
+    [DVIDEN_SSN]              VARCHAR (50)  NULL,
+    [DVIDEN_DOB]              DATETIME      NULL,
+    [DVIDEN_SourceIdentifier] VARCHAR (50)  NULL,
+    [DVIDEN_FirstNameAlphaUp] VARCHAR (100) NULL,
+    [DVIDEN_LastNameAlphaUp]  VARCHAR (100) NULL,
+    [DVIDEN_HomePhone]        VARCHAR (100) NULL,
+    [DVIDEN_HomePhoneAlphaUp] AS            ([dbo].[ALPHAUP]([DVIDEN_HomePhone])) PERSISTED,
+    [DVIDEN_SexCode_ID]       INT           NULL,
+    [DVIDEN_RootID]           INT           NULL,
+    [DVIDEN_RowID]            INT           NOT NULL,
+    CONSTRAINT [PK_DV_Identity] PRIMARY KEY NONCLUSTERED ([DVIDEN_RowID] ASC) WITH (FILLFACTOR = 80) ON [PRIMARY_IDX],
+    CONSTRAINT [FK_A_DV_Identity_DVIDEN_SexCode_ID_V_UNIFIEDCODESET] FOREIGN KEY ([DVIDEN_SexCode_ID]) REFERENCES [dbo].[V_UnifiedCodeSet] ([ID]) NOT FOR REPLICATION,
+    CONSTRAINT [FK_DV_Identity_DV_Person] FOREIGN KEY ([DVIDEN_RootID]) REFERENCES [dbo].[DV_Person] ([DVPER_RowID]) NOT FOR REPLICATION,
+    CONSTRAINT [FK_DV_Identity_E_Entity] FOREIGN KEY ([DVIDEN_RowID]) REFERENCES [dbo].[E_Entity] ([ID]) NOT FOR REPLICATION
+);
+
+
+GO
+ALTER TABLE [dbo].[DV_Identity] NOCHECK CONSTRAINT [FK_A_DV_Identity_DVIDEN_SexCode_ID_V_UNIFIEDCODESET];
+
+
+GO
+ALTER TABLE [dbo].[DV_Identity] NOCHECK CONSTRAINT [FK_DV_Identity_DV_Person];
+
+
+GO
+ALTER TABLE [dbo].[DV_Identity] NOCHECK CONSTRAINT [FK_DV_Identity_E_Entity];
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_DV_Identity]
+    ON [dbo].[DV_Identity]([DVIDEN_RootID] ASC) WITH (FILLFACTOR = 80)
+    ON [PRIMARY_IDX];
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_DV_IDENTITY_1]
+    ON [dbo].[DV_Identity]([DVIDEN_HomePhoneAlphaUp] ASC, [DVIDEN_RootID] ASC) WITH (FILLFACTOR = 80)
+    ON [PRIMARY_IDX];
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_DV_Identity_jt]
+    ON [dbo].[DV_Identity]([DVIDEN_RootID] ASC)
+    INCLUDE([DVIDEN_RowID]) WITH (FILLFACTOR = 80)
+    ON [PRIMARY_IDX];
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_DV_Identity_LastNameFirstName]
+    ON [dbo].[DV_Identity]([DVIDEN_FirstNameAlphaUp] ASC, [DVIDEN_LastNameAlphaUp] ASC)
+    INCLUDE([DVIDEN_RootID], [DVIDEN_DOB]) WITH (FILLFACTOR = 80)
+    ON [PRIMARY_IDX];
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_DV_Identity_DOB]
+    ON [dbo].[DV_Identity]([DVIDEN_DOB] ASC)
+    INCLUDE([DVIDEN_RootID]) WITH (FILLFACTOR = 80)
+    ON [PRIMARY_IDX];
+
+
+GO
+CREATE STATISTICS [IX_WA_DVIDEN_RootID]
+    ON [dbo].[DV_Identity]([DVIDEN_RootID]);
+

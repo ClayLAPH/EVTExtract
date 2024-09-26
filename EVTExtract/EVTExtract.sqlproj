@@ -9,8 +9,7 @@
     <ProjectGuid>{41c50fa6-d2e7-41a0-8b49-7beaac545a60}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
-    <RootPath>
-    </RootPath>
+    <RootPath />
     <RootNamespace>EVTExtract</RootNamespace>
     <AssemblyName>EVTExtract</AssemblyName>
     <ModelCollation>1033,CI</ModelCollation>
@@ -52,7 +51,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
-    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
     <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
     <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
   </PropertyGroup>
@@ -80,6 +78,9 @@
     <Folder Include="dbo\Tables\all" />
     <Folder Include="internals\Tables\all" />
     <Folder Include="dbo\Procedures\all" />
+    <Folder Include="dbo\Tables\archive" />
+    <Folder Include="dbo\Views\archive" />
+    <Folder Include="dbo\Views\All" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="LACCovid">
@@ -338,6 +339,59 @@
     <Build Include="dbo\Misc\IdsType.sql" />
     <Build Include="internals\Views\UDFSources.sql" />
     <Build Include="dbo\Tables\UDFSources.sql" />
+    <Build Include="dbo\Views\base\All_Person_Raw.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_CONTACT_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_INCIDENT_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_LAB_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_OUTBREAK_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_OUTBREAK_PROCESS_STATUS_HISTORY_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_PERSON_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_SPECIMEN_ARCHIVE.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_UDF_DATA_ARCHIVE.sql" />
+    <Build Include="dbo\Views\archive\SARS2_CONTACT_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_INCIDENT_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_LAB_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_OUTBREAK_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_OUTBREAK_PROCESS_STATUS_HISTORY_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_PERSON_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_SPECIMEN_COMBINED.sql" />
+    <Build Include="dbo\Views\archive\SARS2_UDF_DATA_COMBINED.sql" />
+    <Build Include="dbo\Views\base\UDF_CATALOG.sql" />
+    <Build Include="internals\Views\VTU.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_INCIDENT_ARCHIVE.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_LAB_ARCHIVE.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_OB_PROCESS_STATUS_ARCHIVE.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_OUTBREAK_ARCHIVE.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_SPECIMEN_ARCHIVE.sql" />
+    <Build Include="dbo\Views\base\Domain.sql" />
+    <Build Include="dbo\Views\base\UnifiedCodeSet.sql" />
+    <Build Include="dbo\Views\base\All_Tables_Catalog.sql" />
+    <Build Include="dbo\Views\base\DrugSusceptibility.sql" />
+    <Build Include="dbo\Views\base\PersonRaces.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVChartAbstract.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVDICorrectionsFacilityInfo.sql" />
+    <Build Include="dbo\Views\uvw\uvw_NCVEDUSection.sql" />
+    <Build Include="dbo\Views\All\uvw_ALL_INCIDENT.sql" />
+    <Build Include="dbo\Views\All\uvw_ALL_LAB.sql" />
+    <Build Include="internals\Tables\SARS2ArchiveKeys.sql" />
+    <Build Include="dbo\Procedures\InitializeSars2Archive.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2IncidentArchive.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2LabArchive.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2OutbreakArchive.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2OutbreakProcessStatusHistoryArchive.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2PersonArchive.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2SpecimenArchive.sql" />
+    <Build Include="dbo\Procedures\ExtractSARS2UdfDataArchive.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_CONTACT_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_INCIDENT_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_LAB_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_OUTBREAK_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_OUTBREAK_PROCESS_STATUS_HISTORY_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_PERSON_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_SPECIMEN_ARCHIVE2.sql" />
+    <Build Include="dbo\Tables\archive\SARS2_UDF_DATA_ARCHIVE2.sql" />
+    <Build Include="internals\Tables\Sars2Archive2.sql" />
+    <Build Include="dbo\Views\uvw\uvw_SARS2_PERSON_ARCHIVE.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj">
@@ -360,6 +414,7 @@
     <None Include="scripts\GetMetadata.sql" />
     <None Include="EVTExtract.DL01.publish.xml" />
     <None Include="EVTExtract.AO04.publish.xml" />
+    <None Include="EVTExtract.AO11.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

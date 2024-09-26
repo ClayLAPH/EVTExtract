@@ -1,0 +1,3 @@
+﻿ALTER DATABASE [$(DatabaseName)]
+    ADD FILEGROUP [ATTRIBUTE_IDX_GROUP];
+

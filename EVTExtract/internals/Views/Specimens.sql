@@ -17,7 +17,7 @@ from
   inner join
   [$(PRD_APHIM_UODS)].dbo.A_Act                     act with (nolock) 
   on 
-    act.ID = specs.DVIS_RowID AND 
+    act.ID = specs.DVIS_RowID and 
     act.statusCode <> 'nullified' 
   inner join
   internals.Ax_LabReport                            lab with (nolock) 
@@ -27,5 +27,3 @@ from
   [$(PRD_APHIM_UODS)].dbo.V_UnifiedCodeSet          specTypeName with (nolock) 
   on 
     specTypeName.ID = specs.DVIS_SpecimenTypeCode_ID
---where
---(ph.DVPR_DiseaseCode_ID = 543030)

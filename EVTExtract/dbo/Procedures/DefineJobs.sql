@@ -16,7 +16,7 @@ begin
       @jobStepId int,
       @jobRetries int = 1,
       @jobRetryInterval int = 1,
-      @jobOwner sysname = N'IRISExtract';
+      @jobOwner sysname = N'HOSTED\c267467';
 
 
   truncate table dbo.ProcessingDocuments;
@@ -59,6 +59,7 @@ begin
   ( values
     --setup
     ('InitializeExtract', 0 ),    
+    ('InitializeSars2Archive', 0 ),    
     ('ExtractDVPerson', 1 ),
     ('ExtractAXLabReport', 1 ),
     ('ExtractBirthCountry', 1 ),
@@ -97,7 +98,16 @@ begin
     ('ExtractSARS2Lab', 1 ),
     ('ExtractSARS2Specimen', 1 ),
     ('ExtractSARS2UdfData', 1 ),
-    
+
+    --sars2 archive
+    ('ExtractSARS2IncidentArchive', 1 ),
+    ('ExtractSARS2LabArchive', 1 ),
+    ('ExtractSARS2OutbreakArchive', 1 ),   
+    ('ExtractSARS2OutbreakProcessStatusHistoryArchive', 1 ),
+    ('ExtractSARS2PersonArchive', 1 ),
+    ('ExtractSARS2SpecimenArchive', 1 ),
+    ('ExtractSARS2UdfDataArchive', 1 ),
+
     --combined
     ('ExtractContacts', 1 ),
 

@@ -1,0 +1,43 @@
+﻿CREATE  FUNCTION [dbo].[FN_SpecimenCollectedDates] (@ID INT, @OPTION INT)
+	RETURNS VARCHAR(1024)
+AS
+BEGIN
+	DECLARE @str VARCHAR(1024)
+	DECLARE @date AS DATETIME
+	DECLARE @COUNT AS INT
+	SET @COUNT=0
+	IF @OPTION = 0
+	BEGIN
+		SELECT @str = CONVERT(VARCHAR,effectiveTime_Beg) FROM A_ACT WHERE [ID]=@ID		
+	END
+	ELSE
+	BEGIN	
+		DECLARE OBS_cursor CURSOR FOR 	
+			SELECT DISTINCT ACTOBS.effectiveTime_Beg FROM A_Observation OBS INNER JOIN A_ACT ACTOBS ON ACTOBS.[ID] = OBS.[ID]			
+			WHERE ACTOBS.CLASSCODE = 'OBS' AND (ACTOBS.METACODE = 'SPEC_RowID' OR ACTOBS.metaCode='DIST_RowID') AND ACTOBS.[ACT_PARENT_ID] = @ID
+		OPEN OBS_cursor
+
+		FETCH NEXT FROM OBS_cursor 
+		INTO @date
+			WHILE @@FETCH_STATUS = 0
+			BEGIN
+				IF @date IS NOT NULL
+				BEGIN
+					IF @COUNT = 0
+					BEGIN
+						SET @str = CONVERT(VARCHAR,@date)
+						SET @COUNT = 1
+					END
+					ELSE
+					BEGIN
+						SET @str = @str + ', ' + CONVERT(VARCHAR,@date)
+					END
+				END
+				FETCH NEXT FROM OBS_cursor 
+				INTO @date
+			END
+		CLOSE OBS_cursor
+		DEALLOCATE OBS_cursor 
+	END
+	RETURN @str
+END

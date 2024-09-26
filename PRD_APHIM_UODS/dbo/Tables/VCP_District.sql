@@ -1,0 +1,29 @@
+﻿CREATE TABLE [dbo].[VCP_District] (
+    [JurisdictionCode] VARCHAR (255) NULL,
+    [IsOutOfCounty]    BIT           NULL,
+    [SPACode_ID]       INT           NULL,
+    [SubjCode_ID]      INT           NULL,
+    [ID]               INT           IDENTITY (1, 1) NOT FOR REPLICATION NOT NULL,
+    CONSTRAINT [VCP_District_PK] PRIMARY KEY NONCLUSTERED ([ID] ASC) WITH (FILLFACTOR = 70),
+    CONSTRAINT [FK_A_VCP_District_SPACode_ID_V_UNIFIEDCODESET] FOREIGN KEY ([SPACode_ID]) REFERENCES [dbo].[V_UnifiedCodeSet] ([ID]) NOT FOR REPLICATION,
+    CONSTRAINT [FK_A_VCP_District_SubjCode_ID_V_UNIFIEDCODESET] FOREIGN KEY ([SubjCode_ID]) REFERENCES [dbo].[V_UnifiedCodeSet] ([ID]) NOT FOR REPLICATION
+);
+
+
+GO
+ALTER TABLE [dbo].[VCP_District] NOCHECK CONSTRAINT [FK_A_VCP_District_SPACode_ID_V_UNIFIEDCODESET];
+
+
+GO
+ALTER TABLE [dbo].[VCP_District] NOCHECK CONSTRAINT [FK_A_VCP_District_SubjCode_ID_V_UNIFIEDCODESET];
+
+
+GO
+ALTER TABLE [dbo].[VCP_District] ENABLE CHANGE_TRACKING WITH (TRACK_COLUMNS_UPDATED = OFF);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_VCP_District_SubjCode_SubjCvDo]
+    ON [dbo].[VCP_District]([SubjCode_ID] ASC) WITH (FILLFACTOR = 70)
+    ON [PRIMARY_IDX];
+
