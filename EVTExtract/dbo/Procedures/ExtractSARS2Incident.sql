@@ -20,9 +20,6 @@ begin
     select @rows = count(*) 
     from 
         [$(LACCovid)].covid.SARS2_INCIDENT si
-    where 
-        si.PR_INCIDENTID not in ( select sa.DVPR_IncidentID from internals.Sars2Archive sa ) and
-        si.PR_INCIDENTID not in ( select sa.DVPR_IncidentID from internals.Sars2Archive2 sa);
 
     select @status = 'ends';
     execute dbo.SetProcessingStatus @status, @name, @instance, @rows;

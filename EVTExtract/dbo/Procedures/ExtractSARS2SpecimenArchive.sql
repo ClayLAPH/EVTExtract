@@ -29,8 +29,6 @@ begin
         dbo.SARS2_SPECIMEN c
         where 
             c.PR_INCIDENTID in (select distinct DVPR_IncidentID from internals.Sars2Archive2) 
-            and
-            c.PR_INCIDENTID not in (select distinct DVPR_IncidentID from internals.Sars2Archive) 
 
       option
         ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );

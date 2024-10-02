@@ -42,9 +42,7 @@ begin
         [$(PRD_APHIM_UODS)].dbo.DV_PHPersonalRecord ph
         on
             p.PER_ROWID = ph.DVPR_PersonDR and
-            ph.DVPR_DiseaseCode_ID = 544041 and
-            ph.DVPR_PersonDR not in (select DVPR_PersonDR from internals.Sars2Archive ) and
-            ph.DVPR_PersonDR not in (select DVPR_PersonDR from internals.Sars2Archive2)
+            ph.DVPR_DiseaseCode_ID = 544041 
     option
       ( recompile, maxdop 8, use hint( 'enable_parallel_plan_preference' ) );
 

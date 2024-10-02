@@ -42,7 +42,6 @@ begin
         on
             p.PER_ROWID = ph.DVPR_PersonDR and
             ph.DVPR_DiseaseCode_ID = 544041 and
-            ph.DVPR_PersonDR not in (select DVPR_PersonDR from internals.Sars2Archive ) and
             ph.DVPR_PersonDR     in (select DVPR_PersonDR from internals.Sars2Archive2)
         
 

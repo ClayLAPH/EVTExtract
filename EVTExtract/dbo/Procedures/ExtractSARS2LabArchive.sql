@@ -34,7 +34,6 @@ begin
         sl.INCIDENTID = pr.DVPR_IncidentID and
         pr.DVPR_DiseaseCode_ID = 544041
     where
-      pr.DVPR_IncidentID not in (select DVPR_IncidentID from internals.Sars2Archive) and
       pr.DVPR_IncidentID in (select DVPR_IncidentID from internals.Sars2Archive2)
     option
       ( recompile, maxdop 4, use hint( 'enable_parallel_plan_preference' ) );      

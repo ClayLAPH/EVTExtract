@@ -54,8 +54,6 @@ begin
         [$(LACCovid)].covid.SARS2_INCIDENT si
     where 
         si.PR_INCIDENTID in (select sa2.DVPR_IncidentID from internals.Sars2Archive2 sa2)
-        and
-        si.PR_INCIDENTID not in (select sa.DVPR_IncidentID from internals.Sars2Archive sa)
 
     select @rows = @@rowcount;
     select @status = 'ends';
