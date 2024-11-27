@@ -1,0 +1,190 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT_ARCHIVE.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|solutionrelative:EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT_ARCHIVE.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_LAB_ARCHIVE.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|solutionrelative:EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_LAB_ARCHIVE.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_elr_incid_temp.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|solutionrelative:EVTExtract\\dbo\\Views\\uvw\\uvw_elr_incid_temp.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\internals\\Views\\Lab.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|solutionrelative:EVTExtract\\internals\\Views\\Lab.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Procedures\\ExtractCovidIncidentLab.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|solutionrelative:EVTExtract\\dbo\\Procedures\\ExtractCovidIncidentLab.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Functions\\DiseaseGroups.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|solutionrelative:EVTExtract\\dbo\\Functions\\DiseaseGroups.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Functions\\DiseaseGroups_Id.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|solutionrelative:EVTExtract\\dbo\\Functions\\DiseaseGroups_Id.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\base\\SARS2_INCIDENT.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|solutionrelative:EVTExtract\\dbo\\Views\\base\\SARS2_INCIDENT.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Procedures\\ExtractSARS2LabArchive.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|solutionrelative:EVTExtract\\dbo\\Procedures\\ExtractSARS2LabArchive.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|solutionrelative:EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT_ARCHIVE.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{41C50FA6-D2E7-41A0-8B49-7BEAAC545A60}|EVTExtract\\EVTExtract.sqlproj|solutionrelative:EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT_ARCHIVE.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Lab.sql",
+              "DocumentMoniker": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\internals\\Views\\Lab.sql",
+              "RelativeDocumentMoniker": "EVTExtract\\internals\\Views\\Lab.sql",
+              "ToolTip": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\internals\\Views\\Lab.sql\r\n(localdb)\\ProjectModels.EVTExtract\r\n(HOSTED\\c267467)",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-11-13T19:40:04.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "uvw_SARS2_LAB_ARCHIVE.sql",
+              "DocumentMoniker": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_LAB_ARCHIVE.sql",
+              "RelativeDocumentMoniker": "EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_LAB_ARCHIVE.sql",
+              "ToolTip": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_LAB_ARCHIVE.sql\r\n(localdb)\\ProjectModels.EVTExtract\r\n(HOSTED\\c267467)",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-11-13T17:01:06.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "uvw_elr_incid_temp.sql",
+              "DocumentMoniker": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_elr_incid_temp.sql",
+              "RelativeDocumentMoniker": "EVTExtract\\dbo\\Views\\uvw\\uvw_elr_incid_temp.sql",
+              "ToolTip": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_elr_incid_temp.sql\r\n(localdb)\\ProjectModels.EVTExtract\r\n(HOSTED\\c267467)",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-11-12T17:22:36.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DiseaseGroups_Id.sql",
+              "DocumentMoniker": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Functions\\DiseaseGroups_Id.sql",
+              "RelativeDocumentMoniker": "EVTExtract\\dbo\\Functions\\DiseaseGroups_Id.sql",
+              "ToolTip": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Functions\\DiseaseGroups_Id.sql\r\n(localdb)\\ProjectModels.EVTExtract\r\n(HOSTED\\c267467)",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-11-09T19:04:38.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DiseaseGroups.sql",
+              "DocumentMoniker": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Functions\\DiseaseGroups.sql",
+              "RelativeDocumentMoniker": "EVTExtract\\dbo\\Functions\\DiseaseGroups.sql",
+              "ToolTip": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Functions\\DiseaseGroups.sql\r\n(localdb)\\ProjectModels.EVTExtract\r\n(HOSTED\\c267467)",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-11-09T19:01:23.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SARS2_INCIDENT.sql",
+              "DocumentMoniker": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\base\\SARS2_INCIDENT.sql",
+              "RelativeDocumentMoniker": "EVTExtract\\dbo\\Views\\base\\SARS2_INCIDENT.sql",
+              "ToolTip": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\base\\SARS2_INCIDENT.sql\r\n(localdb)\\ProjectModels.EVTExtract\r\n(HOSTED\\c267467)",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-10-03T20:42:37.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ExtractSARS2LabArchive.sql",
+              "DocumentMoniker": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Procedures\\ExtractSARS2LabArchive.sql",
+              "RelativeDocumentMoniker": "EVTExtract\\dbo\\Procedures\\ExtractSARS2LabArchive.sql",
+              "ToolTip": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Procedures\\ExtractSARS2LabArchive.sql\r\n(localdb)\\ProjectModels.EVTExtract\r\n(HOSTED\\c267467)",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-10-02T20:19:17.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "uvw_SARS2_INCIDENT_ARCHIVE.sql ",
+              "DocumentMoniker": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT_ARCHIVE.sql",
+              "RelativeDocumentMoniker": "EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT_ARCHIVE.sql",
+              "ToolTip": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT_ARCHIVE.sql\r\n(localdb)\\ProjectModels.EVTExtract\r\n(HOSTED\\c267467)",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-10-02T17:01:58.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ExtractCovidIncidentLab.sql",
+              "DocumentMoniker": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Procedures\\ExtractCovidIncidentLab.sql",
+              "RelativeDocumentMoniker": "EVTExtract\\dbo\\Procedures\\ExtractCovidIncidentLab.sql",
+              "ToolTip": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Procedures\\ExtractCovidIncidentLab.sql\r\n(localdb)\\ProjectModels.EVTExtract\r\n(HOSTED\\c267467)",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-11-13T19:34:52.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "uvw_SARS2_INCIDENT.sql",
+              "DocumentMoniker": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT.sql",
+              "RelativeDocumentMoniker": "EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT.sql",
+              "ToolTip": "C:\\Users\\c267467\\source\\repos\\ClayLAPH\\EVTExtract\\EVTExtract\\dbo\\Views\\uvw\\uvw_SARS2_INCIDENT.sql\r\n(localdb)\\ProjectModels.EVTExtract\r\n(HOSTED\\c267467)",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-10-02T18:05:43.876Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

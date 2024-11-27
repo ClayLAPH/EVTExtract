@@ -81,6 +81,7 @@
     <Folder Include="dbo\Tables\archive" />
     <Folder Include="dbo\Views\archive" />
     <Folder Include="dbo\Views\All" />
+    <Folder Include="dbo\Functions" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="LACCovid">
@@ -392,6 +393,8 @@
     <Build Include="dbo\Tables\archive\SARS2_UDF_DATA_ARCHIVE2.sql" />
     <Build Include="internals\Tables\Sars2Archive2.sql" />
     <Build Include="dbo\Views\uvw\uvw_SARS2_PERSON_ARCHIVE.sql" />
+    <Build Include="dbo\Functions\DiseaseGroups.sql" />
+    <Build Include="dbo\Functions\DiseaseGroups_Id.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PRD_APHIM_UODS\PRD_APHIM_UODS.sqlproj">
